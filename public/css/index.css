@@ -99,6 +99,14 @@ body {
     background: var(--primary-hover);
 }
 
+.alert-onfly {
+    position: fixed;
+    z-index: 1000000;
+    top: 20px;
+    left: 20px;
+    transition: var(--transition-5);
+}
+
 button {
     background: none;
     outline: none;

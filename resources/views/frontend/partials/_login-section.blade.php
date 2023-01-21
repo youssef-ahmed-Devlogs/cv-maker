@@ -5,15 +5,25 @@
                 <h2 class="login-title">
                     {{ __('frontend.welcome') }}
                 </h2>
-                <form>
+                <form action="{{ route('frontend.login') }}" method="POST">
+                    @csrf
+
                     <div class="form-item mb-2">
                         <input type="email" class="form-control" name="email"
-                            placeholder="{{ __('frontend.enter_email') }}" />
+                            placeholder="{{ __('frontend.enter_email') }}" value="{{ old('email') }}" />
+
+                        @error('email')
+                            <small class="text-danger d-block">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <div class="form-item">
                         <input type="password" class="form-control" name="password"
-                            placeholder="{{ __('frontend.enter_password') }}" />
+                            placeholder="{{ __('frontend.enter_password') }}" value="{{ old('password') }}" />
+
+                        @error('password')
+                            <small class="text-danger d-block">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <button class="login-button btn btn-xl btn-primary w-100 mt-3">
