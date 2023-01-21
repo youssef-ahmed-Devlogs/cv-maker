@@ -1,0 +1,8 @@
+body {
+    direction: rtl;
+}
+
+header .desktop-links .navbar-nav .dropdown-menu {
+    left: 0;
+    right: initial;
+}

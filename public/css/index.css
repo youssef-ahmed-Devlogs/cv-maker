@@ -99,6 +99,12 @@ body {
     background: var(--primary-hover);
 }
 
+button {
+    background: none;
+    outline: none;
+    border: none;
+}
+
 a {
     display: block;
     text-decoration: none;

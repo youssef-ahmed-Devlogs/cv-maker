@@ -9,11 +9,21 @@
                 </div>
                 <div class="col-xl-8">
                     <ul class="links d-flex align-items-center flex-wrap gap-4">
-                        <a href="{{ route('frontend.my_account') }}">My Account</a>
-                        <a href="{{ route('frontend.templates') }}">Templates</a>
-                        <a href="{{ route('frontend.about') }}">About</a>
-                        <a href="{{ route('frontend.faq') }}">FAQ</a>
-                        <a href="{{ route('frontend.contact') }}">Contact Us</a>
+                        <a href="{{ route('frontend.my_account') }}">
+                            {{ __('frontend.my_account') }}
+                        </a>
+                        <a href="{{ route('frontend.templates') }}">
+                            {{ __('frontend.templates') }}
+                        </a>
+                        <a href="{{ route('frontend.about') }}">
+                            {{ __('frontend.about') }}
+                        </a>
+                        <a href="{{ route('frontend.faq') }}">
+                            {{ __('frontend.faq') }}
+                        </a>
+                        <a href="{{ route('frontend.contact') }}">
+                            {{ __('frontend.contact_us') }}
+                        </a>
                     </ul>
                 </div>
             </div>

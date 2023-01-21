@@ -6,9 +6,24 @@
             </a>
 
             <div class="desktop-links d-flex align-items-center">
-                <div class="language-toggle mx-2">
-                    <img src="{{ asset('images/logo/ar.jpg') }}" alt="site language" title="lang" />
-                </div>
+                <form action="{{ route('localization.change_language') }}" method="POST">
+                    @csrf
+
+                    @if (session()->get('locale') == 'en')
+                        <button class="language-toggle mx-2">
+                            <img src="{{ asset('images/logo/ar.jpg') }}" alt="site language" />
+                        </button>
+                        <input type="hidden" name="language" value="ar">
+                    @elseif (session()->get('locale') == 'ar')
+                        <button class="language-toggle mx-2">
+                            <img src="{{ asset('images/logo/en.jpg') }}" alt="site language" />
+                        </button>
+
+                        <input type="hidden" name="language" value="en">
+                    @endif
+
+
+                </form>
 
                 <div class="dark-mode-toggle mx-2">
                     <i class="fas fa-moon icon"></i>
@@ -18,7 +33,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('frontend.my_cvs') }}">
                             <i class="far fa-copy"></i>
-                            My CVs
+                            {{ __('frontend.my_cvs') }}
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -31,19 +46,20 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('frontend.my_account') }}">
                                     <i class="fas fa-user"></i>
-                                    My Account
+                                    {{ __('frontend.my_account') }}
                                 </a>
                             </li>
 
                             <li>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-door-closed"></i>
-                                    Logout
+                                    {{ __('frontend.logout') }}
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+
 
                 <button class="navbar-toggler d-none ms-1" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -56,7 +72,9 @@
             <div class="mobile-links offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                        {{ __('frontend.menu') }}
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
                         <i class="fas fa-times"></i>
                     </button>
@@ -74,14 +92,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <i class="far fa-copy"></i>
-                                My CVs
+                                {{ __('frontend.my_cvs') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <i class="fas fa-door-closed"></i>
-                                Logout
+                                {{ __('frontend.logout') }}
                             </a>
                         </li>
                     </ul>

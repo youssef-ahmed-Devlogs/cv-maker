@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 
+    @if (session()->get('locale') == 'ar')
+        <link rel="stylesheet" href="{{ asset('css/index-ar.css') }}" />
+    @endif
+
     @yield('styles')
 </head>
 

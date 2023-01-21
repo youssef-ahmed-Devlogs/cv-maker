@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,5 @@ Route::get('/templates', [FrontendController::class, 'templates'])->name('fronte
 Route::get('/create', [FrontendController::class, 'create'])->name('frontend.create');
 Route::get('/my-cvs', [FrontendController::class, 'myCvs'])->name('frontend.my_cvs');
 Route::get('/my-account', [FrontendController::class, 'myAccount'])->name('frontend.my_account');
+
+Route::post("/localization", [LocalizationController::class, 'changeLanguage'])->name('localization.change_language');

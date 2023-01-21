@@ -14,14 +14,14 @@
             <div class="row pt-5 align-items-center">
                 <div class="col col-md-6 col-lg-6 col-sm-12">
                     <h1>
-                        Create your best cv <br />
-                        Quickly
+                        {{ __('frontend.hero_heading') }}
                     </h1>
                     <p>
-                        Use our professionally reviewed and tested CV templates. Get
-                        your new CV ready to download in just a few minutes.
+                        {{ __('frontend.hero_text') }}
                     </p>
-                    <a href="{{ route('frontend.templates') }}" class="btn btn-xl btn-primary">Create My CV</a>
+                    <a href="{{ route('frontend.templates') }}" class="btn btn-xl btn-primary">
+                        {{ __('frontend.hero_button_text') }}
+                    </a>
                 </div>
                 <div class="col col-md-6 col-lg-6 col-sm-12">
                     <div class="image mx-auto">
@@ -43,10 +43,11 @@
                     <span class="adv-icon blue">
                         <i class="fas fa-tachometer-alt"></i>
                     </span>
-                    <h3>Quick and Easy</h3>
+                    <h3>
+                        {{ __('frontend.advantages_heading.0') }}
+                    </h3>
                     <p>
-                        Save time with our CV maker. No more writer's block or
-                        formatting issues in Word.
+                        {{ __('frontend.advantages_text.0') }}
                     </p>
                 </div>
                 <div class="adv-card col-xl-4 mb-4">
@@ -54,20 +55,22 @@
                         <i class="fas fa-chart-bar"></i>
                     </span>
 
-                    <h3>More Professional</h3>
+                    <h3>
+                        {{ __('frontend.advantages_heading.1') }}
+                    </h3>
                     <p>
-                        Stand out from the crowd with our professionally designed and
-                        fully customisable CV templates.
+                        {{ __('frontend.advantages_text.1') }}
                     </p>
                 </div>
                 <div class="adv-card col-xl-4 mb-4">
                     <span class="adv-icon yellow">
                         <i class="far fa-address-card"></i>
                     </span>
-                    <h3>Designed by Experts</h3>
+                    <h3>
+                        {{ __('frontend.advantages_heading.2') }}
+                    </h3>
                     <p>
-                        All templates have been reviewed and tested by expert
-                        recruiters. It'll let you show yourself in the best possible .
+                        {{ __('frontend.advantages_text.2') }}
                     </p>
                 </div>
             </div>
@@ -80,7 +83,9 @@
 
     <section class="subscription-section">
         <div class="container">
-            <h3 class="section-title text-center mb-5">Choose Your Plan</h3>
+            <h3 class="section-title text-center mb-5">
+                {{ __('frontend.subscription_heading') }}
+            </h3>
 
             <div class="row">
                 <div class="col-xl-6 mb-3">
@@ -88,7 +93,9 @@
                         <div class="card-body">
                             <!-- card head -->
                             <div class="card-head text-center mb-3">
-                                <h3 class="card-title">FREE SUBSCRIPTION</h3>
+                                <h3 class="card-title">
+                                    {{ __('frontend.subscription_free') }}
+                                </h3>
                             </div>
 
                             <!-- card price -->
@@ -97,48 +104,34 @@
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
                                         <span class="before-discount d-block">$0.00</span>
                                         <span class="text-primary bg-primary-opacity fw-bold after-discount d-block">
-                                            SAVE 100%
+                                            {{ __('frontend.subscription_save') }} 100%
                                         </span>
                                     </div>
 
                                     <div class="dollar d-flex align-items-baseline justify-content-center">
                                         $
                                         <span>0.00</span>
-                                        /mo
+                                        /{{ __('frontend.subscription_per_month') }}
                                     </div>
                                 </div>
                                 <a href="{{ route('frontend.templates') }}" class="subscripe-btn btn btn-primary">
-                                    START NOW
+                                    {{ __('frontend.subscription_start_button_text') }}
                                 </a>
                             </div>
 
                             <!-- card list -->
                             <ul class="card-list pb-0">
-                                <li class="list-item">
-                                    <i class="icon fas fa-check"></i>
-                                    Download templates with JPG extension only
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-times"></i>
-                                    Use many pro templates
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-times"></i>
-                                    Download templates with many extensions ( PDF - JPG - PNG
-                                    )
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-times"></i>
-                                    Edit templates after create it from any where and any time
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-times"></i>
-                                    Change templates theme
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-times"></i>
-                                    Share your CV with one click
-                                </li>
+                                @foreach (__('frontend.subscription_features') as $subFeature => $cost)
+                                    <li class="list-item">
+                                        @if ($cost == 'free')
+                                            <i class="icon fas fa-check"></i>
+                                        @else
+                                            <i class="icon fas fa-times"></i>
+                                        @endif
+
+                                        {{ $subFeature }}
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -149,7 +142,9 @@
                         <div class="card-body">
                             <!-- card head -->
                             <div class="card-head text-center mb-3">
-                                <h3 class="card-title">PRO SUBSCRIPTION</h3>
+                                <h3 class="card-title">
+                                    {{ __('frontend.subscription_pro') }}
+                                </h3>
                             </div>
 
                             <!-- card price -->
@@ -158,44 +153,31 @@
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
                                         <span class="before-discount d-block">$9.99</span>
                                         <span class="text-success bg-success-opacity fw-bold after-discount d-block">
-                                            SAVE 50%
+                                            {{ __('frontend.subscription_save') }} 50%
                                         </span>
                                     </div>
 
                                     <div class="dollar d-flex align-items-baseline justify-content-center">
                                         $
                                         <span>4.99</span>
-                                        /mo
+                                        /{{ __('frontend.subscription_per_month') }}
                                     </div>
                                 </div>
                                 <button class="subscripe-btn btn btn-success">
-                                    SUBSCRIBE NOW
+                                    {{ __('frontend.subscription_subscribe_button_text') }}
                                 </button>
                             </div>
 
                             <!-- card list -->
                             <ul class="card-list pb-0">
-                                <li class="list-item">
-                                    <i class="icon fas fa-check"></i>
-                                    Use many pro templates
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-check"></i>
-                                    Download templates with many extensions ( PDF - JPG - PNG
-                                    )
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-check"></i>
-                                    Edit templates after create it from any where and any time
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-check"></i>
-                                    Change templates theme
-                                </li>
-                                <li class="list-item">
-                                    <i class="icon fas fa-check"></i>
-                                    Share your CV with one click
-                                </li>
+                                @foreach (__('frontend.subscription_features') as $subFeature => $cost)
+                                    @if ($cost == 'pro')
+                                        <li class="list-item">
+                                            <i class="icon fas fa-check"></i>
+                                            {{ $subFeature }}
+                                        </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -218,7 +200,9 @@
                         </span>
                         <div class="d-flex align-items-center justify-content-center">
                             <div class="info">
-                                <span class="text d-block">Users</span>
+                                <span class="text d-block">
+                                    {{ __('frontend.statistics_users') }}
+                                </span>
                                 <span class="count d-block">+1200</span>
                             </div>
                         </div>
@@ -232,7 +216,9 @@
                         </span>
                         <div class="d-flex align-items-center justify-content-center">
                             <div class="info">
-                                <span class="text d-block">Templates</span>
+                                <span class="text d-block">
+                                    {{ __('frontend.statistics_templates') }}
+                                </span>
                                 <span class="count d-block">+100</span>
                             </div>
                         </div>
@@ -246,7 +232,9 @@
                         </span>
                         <div class="d-flex align-items-center justify-content-center">
                             <div class="info">
-                                <span class="text d-block">Downloads</span>
+                                <span class="text d-block">
+                                    {{ __('frontend.statistics_downloads') }}
+                                </span>
                                 <span class="count d-block">+900</span>
                             </div>
                         </div>
@@ -266,13 +254,13 @@
                 <div class="col-xl-6 mb-5">
                     <div class="left-area">
                         <p class="conbinations-text">
-                            Have you checked out our Templates?
+                            {{ __('frontend.diff_conbitaions_text') }}
                         </p>
                         <h3 class="conbinations-title">
-                            More than 30 different combinations
+                            {{ __('frontend.diff_conbitaions_heading') }}
                         </h3>
                         <a href="{{ route('frontend.templates') }}" class="conbinations-btn btn btn-success">
-                            See Templates
+                            {{ __('frontend.diff_conbitaions_button_text') }}
                         </a>
                     </div>
                 </div>
