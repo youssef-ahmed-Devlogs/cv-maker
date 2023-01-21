@@ -7,7 +7,6 @@
     @endguest
     <!-- ====================== END LOGIN SECTION ====================== -->
 
-
     <!-- ====================== START hero section ====================== -->
 
     <section class="hero-section">
