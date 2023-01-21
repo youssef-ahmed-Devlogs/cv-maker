@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.index');
+        $usersCount = User::count();
+        return view('frontend.pages.index', compact('usersCount'));
     }
 
     public function about()

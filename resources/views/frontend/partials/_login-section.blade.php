@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-xl-6 mb-4">
                 <h2 class="login-title">
-                    {{ __('frontend.welcome') }}
+                    {{ __('frontend.login_heading') }}
                 </h2>
                 <form action="{{ route('frontend.login') }}" method="POST">
                     @csrf
@@ -40,7 +40,7 @@
             </div>
             <div class="col-xl-6">
                 <div class="login-image">
-                    <img src="./images/login-image.svg" alt="login image" class="w-100" />
+                    <img src="{{ asset('frontend/images/login-image.svg') }}" alt="login image" class="w-100" />
                 </div>
             </div>
         </div>

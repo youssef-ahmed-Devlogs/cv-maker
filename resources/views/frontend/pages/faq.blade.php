@@ -3,31 +3,40 @@
 @section('content')
     <section class="frequent-section">
         <div class="container">
-            <h1 class="page-title text-center">Frequent questions</h1>
+            <h1 class="page-title text-center">
+                {{ __('frontend.faq') }}
+            </h1>
 
             <div class="card">
                 <div class="card-body">
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="text">Can I use the site without logging in ?</span>
-                                    <span class="icon">
-                                        <i class="fas fa-angle-up"></i>
-                                    </span>
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    You cannot use the site and make CVs unless you log in to
-                                    the site through the
-                                    <a href="/" class="btn-link d-inline-block">Login Page</a>.
+
+                        @foreach (__('frontend.faq_questions') as $key => $value)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading-{{ $loop->index }}">
+                                    <button class="accordion-button {{ $loop->index > 0 ? 'collapsed' : '' }}"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-{{ $loop->index }}" aria-expanded="true"
+                                        aria-controls="collapse-{{ $loop->index }}">
+                                        <span class="text">{{ $key }}</span>
+                                        <span class="icon">
+                                            <i class="fas fa-angle-up"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapse-{{ $loop->index }}"
+                                    class="accordion-collapse collapse {{ $loop->index == 0 ? 'show' : '' }}"
+                                    aria-labelledby="heading-{{ $loop->index }}" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ $value }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
+                        @endforeach
+
+
+
+                        {{-- <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -66,7 +75,7 @@
                                     possible.
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

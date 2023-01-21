@@ -413,6 +413,8 @@ header .mobile-links .nav-link {
     align-items: center;
     gap: 5px;
     font-size: var(--h7-size);
+    width: 100%;
+    color: var(--dark-color);
 }
 
 header .mobile-links .nav-link .icon,

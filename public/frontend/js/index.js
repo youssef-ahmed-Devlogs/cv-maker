@@ -51,16 +51,16 @@ function changeColors() {
         setCssVar("--blue-light-color", cssColors.blueDarkColor);
         setCssVar("--body-color", cssColors.bodyDarkColor);
 
-        headerLogo.src = "../images/logo/logo-light.png";
-        footerLogo.src = "../images/logo/logo-dark.png";
+        headerLogo.src = "../frontend/images/logo/logo-light.png";
+        footerLogo.src = "../frontend/images/logo/logo-dark.png";
     } else {
         setCssVar("--light-color", cssColors.lightColor);
         setCssVar("--dark-color", cssColors.darkColor);
         setCssVar("--blue-light-color", cssColors.blueLightColor);
         setCssVar("--body-color", cssColors.bodyColor);
 
-        headerLogo.src = "../images/logo/logo-dark.png";
-        footerLogo.src = "../images/logo/logo-light.png";
+        headerLogo.src = "../frontend/images/logo/logo-dark.png";
+        footerLogo.src = "../frontend/images/logo/logo-light.png";
     }
 }
 

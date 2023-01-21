@@ -1,0 +1,30 @@
+/* FONTS */
+@font-face {
+    font-family: "Cairo";
+    src: url("../siteFonts/Cairo/Cairo-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../siteFonts/Cairo/Cairo-Bold.ttf");
+    font-weight: bold;
+}
+
+body {
+    direction: rtl;
+    font-family: "Cairo", sans-serif;
+}
+
+header .desktop-links .navbar-nav .dropdown-menu {
+    left: 0;
+    right: initial;
+}
+
+.modal-header .btn-close {
+    margin: initial;
+}
+
+.accordion .accordion-button .icon {
+    right: initial;
+    left: 15px;
+}

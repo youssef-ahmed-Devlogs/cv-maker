@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-4 mb-3">
                     <a href="{{ route('frontend.index') }}" class="logo">
-                        <img src="{{ asset('images/logo/logo-light.png') }}" alt="" />
+                        <img src="{{ asset('frontend/images/logo/logo-light.png') }}" alt="" />
                     </a>
                 </div>
                 <div class="col-xl-8">

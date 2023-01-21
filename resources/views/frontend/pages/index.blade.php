@@ -25,7 +25,7 @@
                 </div>
                 <div class="col col-md-6 col-lg-6 col-sm-12">
                     <div class="image mx-auto">
-                        <img src="./images/hero.png" alt="tamplet photo" />
+                        <img src="{{ asset('frontend/images/hero.png') }}" alt="tamplet photo" />
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_users') }}
                                 </span>
-                                <span class="count d-block">+1200</span>
+                                <span class="count d-block">+{{ $usersCount }}</span>
                             </div>
                         </div>
                     </div>
@@ -267,7 +267,8 @@
 
                 <div class="col-xl-6 mx-auto">
                     <div class="conbinations-image text-center">
-                        <img src="images/different-templates.svg" class="w-100" alt="conbinations-image" />
+                        <img src="{{ asset('frontend/images/different-templates.svg') }}" class="w-100"
+                            alt="conbinations-image" />
                     </div>
                 </div>
             </div>

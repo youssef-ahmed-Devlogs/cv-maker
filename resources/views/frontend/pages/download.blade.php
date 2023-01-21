@@ -183,6 +183,6 @@
 
 
 @section('scripts')
-    <script src="{{ asset('js/html2canvas.min.js') }}"></script>
-    <script src="{{ asset('js/html2pdf.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/html2canvas.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/html2pdf.bundle.min.js') }}"></script>
 @endsection

@@ -21,8 +21,11 @@ return new class extends Migration
             $table->string('gender');
             $table->string('age');
             $table->string('role')->default('user');
+            $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            $table->string('about_me')->nullable();
+            $table->longText('about_me')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

@@ -26,6 +26,8 @@ class User extends Authenticatable
         'role',
         'phone',
         'about_me',
+        'country',
+        'city',
     ];
 
     /**
@@ -46,4 +48,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function photo()
+    {
+        return $this->photo ? asset('storage/users/photos/' . $this->photo) : asset('images/user_' . $this->gender . '.jpg');
+    }
+
+    public function isAdmin()
+    {
+        return strtolower(trim($this->role)) == 'admin';
+    }
 }

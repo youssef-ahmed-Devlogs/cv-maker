@@ -15,12 +15,20 @@ return [
 
   // =========== Start Home page ===========
 
-  // Login Form ( Home )
-  'welcome' => 'Welcome back!',
+  // Login and Register Form ( Home )
+  'login_heading' => 'Welcome back!',
+  'register_heading' => 'Create a new account',
+  'login' => 'Login',
+  'register' => 'Register',
+  'create_account' => 'Create a new account',
+  'enter_name' => 'Enter your name',
   'enter_email' => 'Enter your email address',
   'enter_password' => 'Enter your password',
-  'login' => 'Login',
-  'create_account' => 'Create a new account',
+  'enter_password_confirmation' => 'Re-Enter your password',
+  'enter_age' => 'Enter your age',
+  'enter_gender' => 'Your gender',
+  'male' => 'Male',
+  'female' => 'Female',
 
   // Hero Section
   'hero_heading' => 'Create your best cv Quickly',
@@ -63,4 +71,18 @@ return [
   'diff_conbitaions_button_text' => 'See Templates',
 
   // =========== End Home page ===========
+
+
+  // Contact Us Page
+  'enter_subject' => 'Subject',
+  'enter_content' => 'Content',
+  'send' => 'Send',
+
+  // FAQ Page
+  'faq_questions' => [
+    'Can I use the site without logging in ?' =>  'You cannot use the site and make CVs unless you log in to the site through the Login Page',
+    'In which formats can I download my CV ?' =>  'If you are on the FREE SUBSCRIPTION, you can download your resume in JPG format.
+    But if you are within the PRO SUBSCRIPTION, you can also download it as a PDF file',
+    'Are these CVs good for applying for jobs ?' =>  "All templates have been reviewed and tested by expert recruiters. It'll let you show yourself in the best possible.",
+  ]
 ];

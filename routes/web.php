@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Frontend\AuthController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 

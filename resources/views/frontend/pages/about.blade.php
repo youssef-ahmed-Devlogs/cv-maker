@@ -3,32 +3,18 @@
 @section('content')
     <section class="frequent-section">
         <div class="container">
-            <h1 class="page-title text-center">About Us</h1>
+            <h1 class="page-title text-center">{{ __('frontend.about') }}</h1>
             <div class="card">
                 <div class="card-body">
-                    <div class="doyoudo">
-                        <h3 class="question">Quick and Easy</h3>
-                        <p class="answer">
-                            Save time with our CV maker. No more writer's block or
-                            formatting issues in Word.
-                        </p>
-                    </div>
 
-                    <div class="doyoudo">
-                        <h3 class="question">More Professional</h3>
-                        <p class="answer">
-                            Stand out from the crowd with our professionally designed and
-                            fully customisable CV templates.
-                        </p>
-                    </div>
-
-                    <div class="doyoudo">
-                        <h3 class="question">Designed by Experts</h3>
-                        <p class="answer">
-                            All templates have been reviewed and tested by expert
-                            recruiters. It'll let you show yourself in the best possible.
-                        </p>
-                    </div>
+                    @foreach (__('frontend.advantages_heading') as $heading)
+                        <div class="doyoudo">
+                            <h3 class="question">{{ $heading }}</h3>
+                            <p class="answer">
+                                {{ __('frontend.advantages_text')[$loop->index] }}
+                            </p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
