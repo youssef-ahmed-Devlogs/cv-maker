@@ -911,6 +911,14 @@ section.statistics-section .card .count {
     position: relative;
     padding-left: 20px;
     background-color: var(--blue-light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create-cv-page .cv-form .section-title .remove-section {
+    padding-right: 10px;
+    cursor: pointer;
 }
 
 .create-cv-page .cv-form .section-title::after {

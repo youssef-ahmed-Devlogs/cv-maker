@@ -54,7 +54,14 @@ const single_education = `
 addEducationButton.addEventListener("click", function (e) {
     additionalSecsContainer.innerHTML += `
         <section id="education">
-          <h2 class="section-title">${addEducationButton.dataset.section_name}</h2>
+          <h2 class="section-title">
+          ${addEducationButton.dataset.section_name}
+
+          <span class="remove-section">
+            <i class="fas fa-times"></i>
+          </span>
+          
+          </h2>
 
           <div class="" id="education-inputs">
             ${single_education}
