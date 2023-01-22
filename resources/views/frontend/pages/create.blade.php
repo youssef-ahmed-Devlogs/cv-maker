@@ -3,7 +3,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('cv_templates/template.css') }}">
-    <link rel="stylesheet" href="{{ asset('cv_templates/template_1/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('cv_templates/template_5/style.css') }}">
 @endsection
 
 @section('content')
@@ -139,24 +139,15 @@
                             <img class="icon" src="{{ auth()->user()->photo() }}" alt="" />
                         </div>
                         <div class="template_person_name_title">
-                            <h2 class="template_name">Youssef Ahmed</h2>
-                            <p class="template_person_title">Web Developer</p>
+                            <h2 class="template_person_name template_text_dark">
+                                Youssef Ahmed
+                            </h2>
+                            <p class="template_person_title template_text_dark">
+                                Web Developer
+                            </p>
                         </div>
                     </div>
                     <!-- End Template Person -->
-
-                    <!-- Start Template Header Contact -->
-                    <div class="template_header_contact">
-                        <span class="template_header_email">
-                            <i class="fas fa-envelope"></i>
-                            youssef@gmail.com
-                        </span>
-                        <span class="template_header_phone">
-                            <i class="fas fa-phone"></i>
-                            01154214028
-                        </span>
-                    </div>
-                    <!-- End Template Header Contact -->
                 </div>
                 <!-- End Template Header -->
 
@@ -166,25 +157,27 @@
                     <div class="template_left_area">
                         <!-- Start Template Section -->
                         <div class="template_section">
-                            <h2 class="template_sec_title">About Me</h2>
+                            <h2 class="template_sec_title bullet bullet-radius">About Me</h2>
 
                             <p class="template_sec_text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic,
-                                nemo nostrum? Suscipit minima sequi accusantium atque, culpa
-                                sunt eum incidunt aut omnis vel ipsum maiores debitis eveniet
-                                aliquam, eius
+                                Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Hic, nemo nostrum?
+                                Suscipit minima sequi accusantium atque,
+                                culpa sunt eum incidunt aut omnis vel ipsum
+                                maiores debitis eveniet aliquam, eius
                             </p>
                         </div>
                         <!-- End Template Section -->
 
                         <!-- Start Template Section -->
                         <div class="template_section">
-                            <h2 class="template_sec_title">Education</h2>
+                            <h2 class="template_sec_title bullet bullet-radius">Education</h2>
 
                             <!-- Start Template Section Info -->
                             <div class="template_sec_info">
                                 <h4 class="template_sec_info_title">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing
                                 </h4>
 
                                 <div class="template_sec_info_details">
@@ -194,10 +187,12 @@
                                 </div>
 
                                 <p class="template_sec_text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Hic, nemo nostrum? Suscipit minima sequi accusantium atque,
-                                    culpa sunt eum incidunt aut omnis vel ipsum maiores debitis
-                                    eveniet aliquam, eius
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Hic, nemo nostrum?
+                                    Suscipit minima sequi accusantium atque,
+                                    culpa sunt eum incidunt aut omnis vel
+                                    ipsum maiores debitis eveniet aliquam,
+                                    eius
                                 </p>
                             </div>
                             <!-- End Template Section Info -->
@@ -206,12 +201,13 @@
 
                         <!-- Start Template Section -->
                         <div class="template_section">
-                            <h2 class="template_sec_title">Experience</h2>
+                            <h2 class="template_sec_title bullet bullet-radius">Experience</h2>
 
                             <!-- Start Template Section Info -->
                             <div class="template_sec_info">
                                 <h4 class="template_sec_info_title">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing
                                 </h4>
 
                                 <div class="template_sec_info_details">
@@ -221,17 +217,20 @@
                                 </div>
 
                                 <p class="template_sec_text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Hic, nemo nostrum? Suscipit minima sequi accusantium atque,
-                                    culpa sunt eum incidunt aut omnis vel ipsum maiores debitis
-                                    eveniet aliquam, eius
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Hic, nemo nostrum?
+                                    Suscipit minima sequi accusantium atque,
+                                    culpa sunt eum incidunt aut omnis vel
+                                    ipsum maiores debitis eveniet aliquam,
+                                    eius
                                 </p>
                             </div>
                             <!-- End Template Section Info -->
 
                             <div class="template_sec_info">
                                 <h4 class="template_sec_info_title">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing
                                 </h4>
                                 <div class="template_sec_info_details">
                                     <span class="template_sec_info_details_part">Backend |
@@ -240,10 +239,12 @@
                                 </div>
 
                                 <p class="template_sec_text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Hic, nemo nostrum? Suscipit minima sequi accusantium atque,
-                                    culpa sunt eum incidunt aut omnis vel ipsum maiores debitis
-                                    eveniet aliquam, eius
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Hic, nemo nostrum?
+                                    Suscipit minima sequi accusantium atque,
+                                    culpa sunt eum incidunt aut omnis vel
+                                    ipsum maiores debitis eveniet aliquam,
+                                    eius
                                 </p>
                             </div>
                         </div>
@@ -251,12 +252,13 @@
 
                         <!-- Start Template Section -->
                         <div class="template_section">
-                            <h2 class="template_sec_title">Projects</h2>
+                            <h2 class="template_sec_title bullet bullet-radius">Projects</h2>
 
                             <!-- Start Template Section Info -->
                             <div class="template_sec_info">
                                 <h4 class="template_sec_info_title">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing
                                 </h4>
 
                                 <div class="template_sec_info_details">
@@ -266,17 +268,20 @@
                                 </div>
 
                                 <p class="template_sec_text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Hic, nemo nostrum? Suscipit minima sequi accusantium atque,
-                                    culpa sunt eum incidunt aut omnis vel ipsum maiores debitis
-                                    eveniet aliquam, eius
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Hic, nemo nostrum?
+                                    Suscipit minima sequi accusantium atque,
+                                    culpa sunt eum incidunt aut omnis vel
+                                    ipsum maiores debitis eveniet aliquam,
+                                    eius
                                 </p>
                             </div>
                             <!-- End Template Section Info -->
 
                             <div class="template_sec_info">
                                 <h4 class="template_sec_info_title">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing
                                 </h4>
                                 <div class="template_sec_info_details">
                                     <span class="template_sec_info_details_part">E-commerce |
@@ -285,10 +290,12 @@
                                 </div>
 
                                 <p class="template_sec_text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Hic, nemo nostrum? Suscipit minima sequi accusantium atque,
-                                    culpa sunt eum incidunt aut omnis vel ipsum maiores debitis
-                                    eveniet aliquam, eius
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Hic, nemo nostrum?
+                                    Suscipit minima sequi accusantium atque,
+                                    culpa sunt eum incidunt aut omnis vel
+                                    ipsum maiores debitis eveniet aliquam,
+                                    eius
                                 </p>
                             </div>
                         </div>
@@ -300,32 +307,60 @@
                     <div class="template_right_area">
                         <!-- Start Template Small Section -->
                         <div class="template_sm_section">
-                            <h5 class="template_sm_section_title">Address</h5>
+                            <h5 class="template_sm_section_title">Email</h5>
                             <p class="template_sm_section_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Ducimus, quaerat.
+                                youssef@gmail.com
                             </p>
                         </div>
                         <!-- End Template Small Section -->
 
                         <!-- Start Template Small Section -->
                         <div class="template_sm_section">
-                            <h5 class="template_sm_section_title">Birth Date</h5>
-                            <p class="template_sm_section_text">11/04/2000</p>
+                            <h5 class="template_sm_section_title">Phone</h5>
+                            <p class="template_sm_section_text">
+                                01154214028
+                            </p>
+                        </div>
+                        <!-- End Template Small Section -->
+
+                        <!-- Start Template Small Section -->
+                        <div class="template_sm_section">
+                            <h5 class="template_sm_section_title">
+                                Address
+                            </h5>
+                            <p class="template_sm_section_text">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ducimus, quaerat.
+                            </p>
+                        </div>
+                        <!-- End Template Small Section -->
+
+                        <!-- Start Template Small Section -->
+                        <div class="template_sm_section">
+                            <h5 class="template_sm_section_title">
+                                Birth Date
+                            </h5>
+                            <p class="template_sm_section_text">
+                                11/04/2000
+                            </p>
                             <p class="template_sm_section_text">Egypt</p>
                         </div>
                         <!-- End Template Small Section -->
 
                         <!-- Start Template Small Section -->
                         <div class="template_sm_section">
-                            <h5 class="template_sm_section_title">Nationality</h5>
+                            <h5 class="template_sm_section_title">
+                                Nationality
+                            </h5>
                             <p class="template_sm_section_text">Egyptian</p>
                         </div>
                         <!-- End Template Small Section -->
 
                         <!-- Start Template Small Section -->
                         <div class="template_sm_section">
-                            <h5 class="template_sm_section_title">Languages</h5>
+                            <h5 class="template_sm_section_title">
+                                Languages
+                            </h5>
 
                             <!-- Start Template Small Section List -->
                             <ul class="template_sm_section_list">
@@ -349,62 +384,64 @@
 
                         <!-- Start Template Small Section -->
                         <div class="template_sm_section">
-                            <h5 class="template_sm_section_title">Skills</h5>
+                            <h5 class="template_sm_section_title">
+                                Skills
+                            </h5>
 
                             <!-- Start Template Rating List -->
                             <ul class="template_rating_list">
-                                <li class="template_rating_list_item">
+                                <li class="template_rating_list_item bullet">
                                     <span class="template_rating_list_item_text">Laravel</span>
 
-                                    <div class="template_rating_list_item_points">
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point"></span>
+                                    <div class="template_rating_list_item_points bullet">
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet "></span>
                                     </div>
                                 </li>
 
-                                <li class="template_rating_list_item">
+                                <li class="template_rating_list_item bullet">
                                     <span class="template_rating_list_item_text">Javascript</span>
 
-                                    <div class="template_rating_list_item_points">
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
+                                    <div class="template_rating_list_item_points bullet">
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
                                     </div>
                                 </li>
 
-                                <li class="template_rating_list_item">
+                                <li class="template_rating_list_item bullet">
                                     <span class="template_rating_list_item_text">Node Js</span>
 
-                                    <div class="template_rating_list_item_points">
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point"></span>
-                                        <span class="template_rating_list_item_point"></span>
+                                    <div class="template_rating_list_item_points bullet">
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet "></span>
+                                        <span class="template_rating_list_item_point bullet "></span>
                                     </div>
                                 </li>
 
-                                <li class="template_rating_list_item">
+                                <li class="template_rating_list_item bullet">
                                     <span class="template_rating_list_item_text">React Js</span>
 
-                                    <div class="template_rating_list_item_points">
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point"></span>
+                                    <div class="template_rating_list_item_points bullet">
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet "></span>
                                     </div>
                                 </li>
 
-                                <li class="template_rating_list_item">
+                                <li class="template_rating_list_item bullet">
                                     <span class="template_rating_list_item_text">Photoshop</span>
 
-                                    <div class="template_rating_list_item_points">
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point active"></span>
-                                        <span class="template_rating_list_item_point"></span>
+                                    <div class="template_rating_list_item_points bullet">
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet  active"></span>
+                                        <span class="template_rating_list_item_point bullet "></span>
                                     </div>
                                 </li>
                             </ul>

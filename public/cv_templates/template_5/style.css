@@ -1,5 +1,10 @@
+:root {
+    --template-primary-color: #a83e3e;
+    --template-second-color: #2c2c2c;
+}
+
 .template_header {
-    background-color: var(--template-primary-color);
+    /* background-color: var(--template-primary-color); */
     padding-top: var(--template-padding-y);
     padding-bottom: var(--template-padding-x);
     padding-left: var(--template-padding-x);
@@ -18,7 +23,7 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 .template_person_name_title {
@@ -30,6 +35,11 @@
     font-size: calc(var(--template-primary-fontsize) - 15px);
     font-weight: bold;
     color: var(--template-white-color);
+}
+
+.template_person_name.template_text_dark,
+.template_person_title.template_text_dark {
+    color: var(--template-second-color);
 }
 
 .template_person_title {
@@ -46,13 +56,17 @@
     justify-content: space-between;
     width: 60%;
     position: absolute;
-    right: 0px;
+    left: 50%;
     bottom: -20px;
+    transform: translateX(-50%);
     border-color: var(--template-white-color);
     border-top-style: solid;
     border-left-style: solid;
+    border-right-style: solid;
     border-top-width: 3px;
     border-left-width: 3px;
+    border-right-width: 3px;
+    border-radius: 30px;
 }
 
 .template_header_email {
