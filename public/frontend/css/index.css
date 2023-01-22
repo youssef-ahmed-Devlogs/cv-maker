@@ -874,6 +874,27 @@ section.statistics-section .card .count {
     padding: 15px;
 }
 
+@media (max-width: 1500px) {
+    .create-cv-page .cv-form {
+        flex: 1;
+    }
+
+    .create-cv-page .cv-preview {
+        flex: 2;
+    }
+}
+
+@media (max-width: 1359px) {
+    .create-cv-page {
+        flex-direction: column;
+    }
+
+    .create-cv-page .cv-form,
+    .create-cv-page .cv-preview {
+        flex: 1;
+    }
+}
+
 .create-cv-page .cv-form {
     background-color: var(--light-color);
     overflow-y: auto;
@@ -971,17 +992,10 @@ section.statistics-section .card .count {
 
 .create-cv-page {
     max-height: calc(100vh - var(--header-height));
-    overflow: hidden;
 }
 
-.create-cv-page .cv-preview #template {
-    background-color: var(--light-color);
-    width: 70%;
-    height: 95%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.create-cv-page .cv-preview {
+    overflow-y: auto;
 }
 
 .create-cv-page .cv-preview .actions {
@@ -1010,39 +1024,6 @@ section.statistics-section .card .count {
 
 .download-page .actions select {
     max-width: 100px;
-}
-
-.template-view {
-    width: 800px;
-    min-height: 1102px;
-    background-color: #fff;
-    margin: auto;
-    margin-bottom: 20px;
-    padding: 50px;
-    user-select: none;
-    overflow: hidden;
-    position: relative;
-}
-
-.template_name {
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.template_sec-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #1a73e8;
-}
-
-.template_text {
-    font-size: 14px;
-    background-color: #1a73e8;
-    color: #fff;
-    padding: 10px;
 }
 
 /* ====================== END DOWNLOAD PAGE  ====================== */
