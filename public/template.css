@@ -1,0 +1,29 @@
+:root {
+  --template-primary-color: #003e77;
+  --template-second-color: #2c2c2c;
+  --template-gray-color: #e4e4e4;
+  --template-white-color: #fff;
+
+  --template-padding-y: 50px;
+  --template-padding-x: 30px;
+  --template-primary-fontsize: 50px;
+}
+
+.template-view * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.template-view {
+  width: 800px;
+  min-height: 1102px;
+  background-color: var(--template-white-color);
+  margin: auto;
+  margin-bottom: 20px;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
