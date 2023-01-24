@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LocalizationController;
@@ -33,6 +34,16 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
 // =============== End Frontend ===============
 
 
-
 // =============== Start Admin ===============
+
+Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
+  Route::get('/login', [AdminController::class, 'index'])->name('login')->middleware('guest');
+
+  Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('', [AdminController::class, 'index'])->name('index');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/users/create', [AdminController::class, 'create'])->name('create');
+  });
+});
+
 // =============== End Admin ===============

@@ -1,6 +1,5 @@
 @extends('frontend.layout.app')
 
-
 @section('styles')
     <link rel="stylesheet" href="{{ asset('cv_templates/template.css') }}">
     <link rel="stylesheet" href="{{ asset('cv_templates/template_5/style.css') }}">

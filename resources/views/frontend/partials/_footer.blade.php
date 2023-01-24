@@ -30,7 +30,7 @@
         </div>
 
         <div class="bottom-footer">
-            <p class="footer-text text-center m-0">&copy; CV MAKER 2022</p>
+            <p class="footer-text text-center m-0">&copy; CV MAKER 2023</p>
         </div>
     </div>
 </footer>
