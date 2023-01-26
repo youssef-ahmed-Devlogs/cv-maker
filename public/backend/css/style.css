@@ -9457,6 +9457,7 @@ svg.pulse-svg {
   .header-right .header-profile img {
     width: 30px;
     height: 30px;
+    object-fit:cover;
     border-radius: 50px; }
   .header-right .header-profile .dropdown-toggle i {
     font-size: 1.25rem; }

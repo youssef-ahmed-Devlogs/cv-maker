@@ -56,6 +56,15 @@
                                     </a>
                                 </li>
 
+                                @if (auth()->user()->isAdmin())
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('admin.index') }}">
+                                            <i class="fas fa-cog"></i>
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                @endif
+
                                 <li>
                                     <form action="{{ route('frontend.logout') }}" method="POST">
                                         @csrf

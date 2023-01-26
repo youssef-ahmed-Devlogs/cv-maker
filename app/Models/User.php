@@ -26,8 +26,8 @@ class User extends Authenticatable
         'role',
         'phone',
         'about_me',
-        'country',
-        'city',
+        'country_id',
+        'city_id',
         'photo',
     ];
 
@@ -59,5 +59,15 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return strtolower(trim($this->role)) == 'admin';
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

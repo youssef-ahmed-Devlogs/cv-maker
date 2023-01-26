@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
             $table->longText('about_me')->nullable();
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
+            $table->foreignId('country_id')->cascadeOnUpdate()->nullable();
+            $table->foreignId('city_id')->cascadeOnUpdate()->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

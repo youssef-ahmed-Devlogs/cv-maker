@@ -87,8 +87,8 @@
                         <div class="form-group">
                             <label>Gender</label>
                             <select class="form-control" name="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="male" {{ old('male') == 'male' ? 'selected' : '' }}>Male</option>
+                                <option value="female" {{ old('male') == 'male' ? 'selected' : '' }}>Female</option>
                             </select>
 
                             @error('gender')
@@ -117,11 +117,11 @@
                         @endphp
                         <div class="form-group">
                             <label>Country</label>
-                            <select class="form-control" name="country" id="country">
+                            <select class="form-control" name="country_id" id="country_id">
                                 <option value="" selected disabled>Select</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}"
-                                        {{ old('country') == $country->id ? 'selected' : '' }}>
+                                        {{ old('country_id') == $country->id ? 'selected' : '' }}>
                                         {{ $country->name() }}
                                     </option>
                                 @endforeach
@@ -136,7 +136,7 @@
                     <div class="col-xl-6">
                         <div class="form-group">
                             <label>City</label>
-                            <select class="form-control" name="city" id="city">
+                            <select class="form-control" name="city_id" id="city_id">
                                 <option value="" selected disabled>Select</option>
                             </select>
 
@@ -160,6 +160,7 @@
 
                     <div class="col-xl-12">
                         <div class="form-group">
+                            <label class="control-label">Photo</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="photo">
                                 <label class="custom-file-label">Choose Photo</label>
@@ -185,13 +186,13 @@
 
 @section('scripts')
     <script>
-        const countryOptions = document.querySelectorAll("#country option");
+        const countryOptions = document.querySelectorAll("#country_id option");
         countryOptions.forEach(option => {
             if (option.selected)
                 fetchCities(option.value);
         });
 
-        $('#country').on('change', function(e) {
+        $('#country_id').on('change', function(e) {
             const country_id = e.target.value;
             fetchCities(country_id);
         })
@@ -201,14 +202,14 @@
                 url: `{{ route('admin.cities.ajaxCities') }}?country_id=${country_id}`,
                 method: 'GET',
             }).done(function(cities) {
-                $("#city").empty();
+                $("#city_id").empty();
 
                 cities.forEach((city) => {
                     const name = JSON.parse(city.name)["name_{{ Session::get('locale') }}"];
-                    $("#city").append(new Option(name, city.id));
+                    $("#city_id").append(new Option(name, city.id));
                 });
 
-                $('#city').selectpicker('refresh');
+                $('#city_id').selectpicker('refresh');
             });
         }
     </script>

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,6 +20,8 @@ class UserFactory extends Factory
     public function definition()
     {
         $gender = fake()->randomElement(['male', 'female']);
+        $country_id = fake()->randomElement(Country::all()->pluck('id'));
+        $city_id = fake()->randomElement(City::all()->pluck('id'));
 
         return [
             'name' => fake()->name($gender),
@@ -28,8 +32,8 @@ class UserFactory extends Factory
             'role' => fake()->randomElement(['user', 'admin']),
             'phone' => fake()->phoneNumber(),
             'about_me' => fake()->sentence(10),
-            'country' => fake()->country(),
-            'city' => fake()->city(),
+            'country_id' => $country_id,
+            'city_id' => $city_id,
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];

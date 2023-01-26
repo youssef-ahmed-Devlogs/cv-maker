@@ -26,6 +26,18 @@
     <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/skin-2.css') }}">
 
+    <style>
+        .language-toggle {
+            border: none;
+            outline: none;
+            border: none;
+        }
+
+        .language-toggle img {
+            width: 30px;
+        }
+    </style>
+
     @yield('styles')
 
 </head>

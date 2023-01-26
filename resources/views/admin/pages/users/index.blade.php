@@ -60,17 +60,22 @@
 
                                         </td>
                                         <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->country }}</td>
-                                        <td>{{ $user->city }}</td>
+                                        <td>{{ $user->country->name() }}</td>
+                                        <td>{{ $user->city->name() }}</td>
                                         <td>{{ $user->created_at }}</td>
 
                                         <td class="d-flex align-items-center" style="gap: 5px">
-                                            <a href="#" class="btn btn-sm btn-primary">
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                                class="btn btn-sm btn-primary">
                                                 <i class="la la-pencil"></i>
                                             </a>
 
-                                            <form action="">
-                                                <button class="btn btn-sm btn-danger">
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Are you sure you want to delete this user?')">
                                                     <i class="la la-trash-o"></i>
                                                 </button>
                                             </form>
