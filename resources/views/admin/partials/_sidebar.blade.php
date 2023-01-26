@@ -2,6 +2,7 @@
     <div class="dlabnav-scroll">
         <ul class="metismenu" id="menu">
             <li>
+
                 <a class="ai-icon" href="{{ route('admin.index') }}" aria-expanded="false">
                     <i class="la la-home"></i>
                     <span class="nav-text">Dashboard</span>
@@ -15,10 +16,10 @@
                 </a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="{{ route('admin.users') }}">Users List</a>
+                        <a href="{{ route('admin.users.index') }}">Users List</a>
                     </li>
                     <li>
-                        <a href="add-student.html">Add User</a>
+                        <a href="{{ route('admin.users.create') }}">Add User</a>
                     </li>
                 </ul>
             </li>

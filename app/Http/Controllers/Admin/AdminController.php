@@ -11,14 +11,4 @@ class AdminController extends Controller
     {
         return view('admin.pages.index');
     }
-
-    public function users()
-    {
-        return view('admin.pages.users.index');
-    }
-
-    public function create()
-    {
-        return view('admin.pages.users.create');
-    }
 }

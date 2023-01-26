@@ -38,7 +38,11 @@ class AuthController extends Controller
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return back();
+
+            if (auth()->user()->role == 'user')
+                return back();
+
+            return redirect()->route('admin.index');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');

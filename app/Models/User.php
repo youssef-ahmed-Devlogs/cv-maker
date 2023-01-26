@@ -28,6 +28,7 @@ class User extends Authenticatable
         'about_me',
         'country',
         'city',
+        'photo',
     ];
 
     /**
@@ -52,7 +53,7 @@ class User extends Authenticatable
 
     public function photo()
     {
-        return $this->photo ? asset('storage/users/photos/' . $this->photo) : asset('images/user_' . $this->gender . '.jpg');
+        return $this->photo ? asset('storage/' . $this->photo) : asset('images/user_' . $this->gender . '.jpg');
     }
 
     public function isAdmin()

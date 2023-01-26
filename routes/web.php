@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LocalizationController;
@@ -37,12 +40,24 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
 // =============== Start Admin ===============
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
-  Route::get('/login', [AdminController::class, 'index'])->name('login')->middleware('guest');
+  Route::get('/login', [AdminAuthController::class, 'loginView'])->name('loginView')->middleware('guest');
+  Route::post('/login', [AdminAuthController::class, 'login'])->name('login')->middleware('guest');
 
   Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('', [AdminController::class, 'index'])->name('index');
-    Route::get('/users', [AdminController::class, 'users'])->name('users');
-    Route::get('/users/create', [AdminController::class, 'create'])->name('create');
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+    Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
+      Route::get('', [UserController::class, 'index'])->name('index');
+      Route::post('', [UserController::class, 'store'])->name('store');
+      Route::get('/create', [UserController::class, 'create'])->name('create');
+      Route::get('/{user}/show', [UserController::class, 'show'])->name('show');
+    });
+
+
+    Route::group(['prefix' => '/cities', 'as' => 'cities.'], function () {
+      Route::get('/ajax', [CityController::class, 'ajaxCities'])->name('ajaxCities');
+    });
   });
 });
 

@@ -1,6 +1,6 @@
 <div class="nav-header">
     <a href="index.html" class="brand-logo">
-        Admin Dashboard
+        <img class="brand-title" src="{{ asset('frontend/images/logo/logo-light.png') }}" alt="">
     </a>
 
     <div class="nav-control">

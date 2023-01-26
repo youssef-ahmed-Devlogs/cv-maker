@@ -1,5 +1,6 @@
 @extends('admin.layout.app')
 
+@section('title', 'Users List')
 
 @section('styles')
 @endsection
@@ -8,11 +9,11 @@
     <div class="row">
         <div class="col-12">
 
-            <button class="btn btn-primary mb-3">
+            <a href="{{ route('admin.users.create') }}"
+                class="btn-create btn btn-primary mb-3 d-inline-flex align-items-center" style="gap: 5px">
                 <i class="fas fa-plus"></i>
-
                 Add User
-            </button>
+            </a>
 
             <div class="card">
                 <div class="card-header">
@@ -37,32 +38,42 @@
                                 </tr>
                             </thead>
 
-                            @php
-                                $users = \App\Models\User::all();
-                            @endphp
-
                             <tbody>
 
                                 @foreach ($users as $user)
                                     <tr>
                                         <td>
-                                            <img class="rounded-circle" width="35"
-                                                src="{{ asset('backend/images/profile/small/pic1.jpg') }}" alt="">
+                                            <img class="rounded-circle" style="width: 40px;height: 40px;object-fit: cover"
+                                                src="{{ $user->photo() }}" alt="">
                                         </td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->gender }}</td>
-                                        <td>Male</td>
-                                        <td>M.COM., P.H.D.</td>
-                                        <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                        <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                        <td>2011/04/25</td>
-                                        <td>2011/04/25</td>
-
                                         <td>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-primary"><i
-                                                    class="la la-pencil"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
-                                                    class="la la-trash-o"></i></a>
+                                            <a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a>
+                                        </td>
+                                        <td>{{ $user->gender }}</td>
+                                        <td>{{ $user->age }}</td>
+                                        <td class="text-center">
+                                            @if ($user->role == 'user')
+                                                <span class="badge badge-rounded badge-success">{{ $user->role }}</span>
+                                            @else
+                                                <span class="badge badge-rounded badge-primary">{{ $user->role }}</span>
+                                            @endif
+
+                                        </td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->country }}</td>
+                                        <td>{{ $user->city }}</td>
+                                        <td>{{ $user->created_at }}</td>
+
+                                        <td class="d-flex align-items-center" style="gap: 5px">
+                                            <a href="#" class="btn btn-sm btn-primary">
+                                                <i class="la la-pencil"></i>
+                                            </a>
+
+                                            <form action="">
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="la la-trash-o"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>
