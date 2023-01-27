@@ -21,6 +21,8 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
 
   Route::middleware(['auth'])->group(function () {
     Route::get('my-account', [FrontendController::class, 'myAccount'])->name('my_account');
+    Route::post('my-account', [FrontendController::class, 'updateMyAccount'])->name('update_my_account');
+    Route::post('my-password', [FrontendController::class, 'updateMyPassword'])->name('update_my_password');
     Route::get('my-cvs', [FrontendController::class, 'myCvs'])->name('my_cvs');
     Route::get('create', [FrontendController::class, 'create'])->name('create');
     Route::get('download', [FrontendController::class, 'download'])->name('download');
