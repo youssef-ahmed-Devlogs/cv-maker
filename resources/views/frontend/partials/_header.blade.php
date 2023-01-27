@@ -114,8 +114,6 @@
                                 <a class="nav-link" href="{{ route('frontend.my_account') }}">
                                     <img class="icon" src="{{ auth()->user()->photo() }}" alt="" />
                                     {{ auth()->user()->name }}
-
-                                    {{ auth()->user()->isAdmin()? 'yes': 'no' }}
                                 </a>
                             </li>
 

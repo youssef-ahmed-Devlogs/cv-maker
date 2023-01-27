@@ -59,9 +59,9 @@
                                             @endif
 
                                         </td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->country->name() }}</td>
-                                        <td>{{ $user->city->name() }}</td>
+                                        <td>{{ $user->phone ? $user->phone : 'Unknown' }}</td>
+                                        <td>{{ $user->country ? $user->country->name() : 'Unknown' }}</td>
+                                        <td>{{ $user->city ? $user->city->name() : 'Unknown' }}</td>
                                         <td>{{ $user->created_at }}</td>
 
                                         <td class="d-flex align-items-center" style="gap: 5px">

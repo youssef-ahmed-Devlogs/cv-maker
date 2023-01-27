@@ -399,6 +399,7 @@ header .desktop-links .navbar-nav .dropdown-menu .dropdown-item {
     align-items: center;
     gap: 5px;
     transition: var(--transition-5);
+    color: var(--dark-color);
 }
 
 header .mobile-links {
