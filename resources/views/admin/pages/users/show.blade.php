@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-9">
                         <span>
-                            {{ $user->country->name() }}
+                            {{ $user->country ? $user->country->name() : 'Unknown' }}
                         </span>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-9">
                         <span>
-                            {{ $user->city->name() }}
+                            {{ $user->city ? $user->city->name() : 'Unknown' }}
                         </span>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                         <h5 class="f-w-500">Phone <span class="pull-right">:</span></h5>
                     </div>
                     <div class="col-9">
-                        <span>{{ $user->phone }}</span>
+                        <span>{{ $user->phone ?? 'Unknown' }}</span>
                     </div>
                 </div>
             </div>

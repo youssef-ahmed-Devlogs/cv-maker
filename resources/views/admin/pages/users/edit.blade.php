@@ -131,6 +131,7 @@
                         <div class="form-group">
                             <label>Country</label>
                             <select class="form-control" name="country_id" id="country_id">
+                                <option value="" selected disabled>Choose country</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}"
                                         {{ $user->country_id == $country->id ? 'selected' : '' }}>
@@ -139,7 +140,7 @@
                                 @endforeach
                             </select>
 
-                            @error('country')
+                            @error('country_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -153,6 +154,7 @@
                         <div class="form-group">
                             <label>City</label>
                             <select class="form-control" name="city_id" id="city_id">
+
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->id }}"
                                         {{ $user->city_id == $city->id ? 'selected' : '' }}>
@@ -160,7 +162,7 @@
                                 @endforeach
                             </select>
 
-                            @error('city')
+                            @error('city_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

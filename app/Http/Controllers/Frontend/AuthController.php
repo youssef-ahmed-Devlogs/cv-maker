@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\NewUserRegistration;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -22,6 +23,14 @@ class AuthController extends Controller
 
         $user = User::create($formFields);
         auth()->login($user);
+
+
+        // Send notification to dashboard
+        $admins = User::where('id', '!=', $user->id)->where('role', '!=', 'user')->get();
+
+        foreach ($admins as $admin)
+            $admin->notify(new NewUserRegistration($user));
+
 
         return response()->json([
             'status' => 'success',

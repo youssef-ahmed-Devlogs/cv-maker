@@ -66,6 +66,8 @@ class FrontendController extends Controller
             'gender' => ['required', 'in:male,female'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
             'about_me' => ['nullable', 'max:5000'],
+            'country_id' => ['required'],
+            'city_id' => ['required'],
         ]);
 
         if ($request->hasFile('photo')) {

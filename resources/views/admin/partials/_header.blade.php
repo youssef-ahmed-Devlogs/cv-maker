@@ -1,3 +1,11 @@
+        <style>
+            .notifications-list-item.active,
+            .notifications-dropdown-item.dropdown-item.active,
+            .notifications-dropdown-item .dropdown-item:active {
+                background: #6673fd3f;
+            }
+        </style>
+
         <!--**********************************
           Header start
       ***********************************-->
@@ -6,22 +14,15 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            <div class="search_bar dropdown">
-                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <i class="mdi mdi-magnify"></i>
-                                </span>
-                                <div class="dropdown-menu p-0 m-0">
-                                    <form>
-                                        <input class="form-control" type="search" placeholder="Search"
-                                            aria-label="Search">
-                                    </form>
-                                </div>
-                            </div>
+                            <h4 class="m-0">
+                                <small>Welcome back</small>
+                                <strong> {{ auth()->user()->name }}</strong>
+                            </h4>
                         </div>
 
                         <ul class="navbar-nav header-right">
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <form action="{{ route('localization.change_language') }}" method="POST">
                                     @csrf
 
@@ -45,7 +46,18 @@
 
 
                                 </form>
-                            </li>
+                            </li> --}}
+
+                            @php
+                                $notifications = auth()
+                                    ->user()
+                                    ->unreadNotifications()
+                                    ->limit(3)
+                                    ->get();
+                                $unreadNotifications = auth()
+                                    ->user()
+                                    ->unreadNotifications->count();
+                            @endphp
 
                             <li class="nav-item dropdown notification_dropdown">
                                 <a class="nav-link bell ai-icon" href="#" role="button" data-toggle="dropdown">
@@ -55,22 +67,50 @@
                                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                         <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                                     </svg>
-                                    <div class="pulse-css"></div>
+                                    @if ($unreadNotifications)
+                                        <div class="pulse-css"></div>
+                                    @endif
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
+
+                                    <p class="d-flex align-items-center justify-content-between pt-3 px-3">
+                                        <span class="badge badge-primary badge-circle">
+                                            {{ $unreadNotifications }}
+                                        </span>
+
+                                        <a href="{{ route('admin.notifications.markAllAsRead') }}">
+                                            <strong>Mark all as read</strong>
+                                        </a>
+                                    </p>
+
                                     <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
+
+                                        @forelse ($notifications as $notification)
+                                            <li
+                                                class="media dropdown-item notifications-dropdown-item {{ !$notification->read_at ? 'active' : '' }}">
+                                                <span class="{{ $notification->data['status'] }}">
+                                                    <i class="ti-{{ $notification->data['type'] }}"></i>
+                                                </span>
+
+                                                <div class="media-body">
+                                                    <a
+                                                        href="{{ route('admin.notifications.read', $notification->id) }}">
+                                                        <p>
+                                                            {{ $notification->data['content'] }}
+                                                        </p>
+                                                    </a>
+                                                </div>
+
+                                                <span class="notify-time">{{ $notification->created_at }}</span>
+                                            </li>
+                                        @empty
+                                            <li class="media dropdown-item">
+                                                There's no unread notifications.
+                                            </li>
+                                        @endforelse
+
+
+                                        {{-- <li class="media dropdown-item">
                                             <span class="primary"><i class="ti-shopping-cart"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
@@ -79,6 +119,7 @@
                                             </div>
                                             <span class="notify-time">3:20 am</span>
                                         </li>
+
                                         <li class="media dropdown-item">
                                             <span class="danger"><i class="ti-bookmark"></i></span>
                                             <div class="media-body">
@@ -90,6 +131,7 @@
                                             </div>
                                             <span class="notify-time">3:20 am</span>
                                         </li>
+
                                         <li class="media dropdown-item">
                                             <span class="primary"><i class="ti-heart"></i></span>
                                             <div class="media-body">
@@ -99,6 +141,7 @@
                                             </div>
                                             <span class="notify-time">3:20 am</span>
                                         </li>
+
                                         <li class="media dropdown-item">
                                             <span class="success"><i class="ti-image"></i></span>
                                             <div class="media-body">
@@ -109,10 +152,11 @@
                                                 </a>
                                             </div>
                                             <span class="notify-time">3:20 am</span>
-                                        </li>
+                                        </li> --}}
+
                                     </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
+                                    <a class="all-notification" href="{{ route('admin.notifications.index') }}">See all
+                                        notifications <i class="ti-arrow-right"></i></a>
                                 </div>
                             </li>
 
@@ -157,9 +201,9 @@
                                         @csrf
                                         <button class="dropdown-item ai-icon">
                                             <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" width="18"
-                                                height="18" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="feather feather-log-out">
+                                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-log-out">
                                                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                                 <polyline points="16 17 21 12 16 7"></polyline>
                                                 <line x1="21" y1="12" x2="9" y2="12">

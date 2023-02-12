@@ -58,11 +58,11 @@ class UserController extends Controller
             'email' => ['required', 'email', "unique:users,email,$user->id,id"],
             'password' => ['nullable', 'min:8', 'max:50', 'confirmed'],
             'age' => ['required', 'numeric', 'min:15', 'max:70'],
-            'phone' => ['required', 'numeric', 'digits_between:11,11'],
+            'phone' => ['nullable', 'numeric', 'digits_between:11,11'],
             'gender' => ['required', 'in:male,female'],
             'role' => ['required', 'in:user,admin'],
-            'country_id' => ['required'],
-            'city_id' => ['required'],
+            'country_id' => ['nullable'],
+            'city_id' => ['nullable'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ]);
 

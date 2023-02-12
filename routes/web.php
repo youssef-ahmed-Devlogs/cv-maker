@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -50,6 +51,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
+
     Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
       Route::get('', [UserController::class, 'index'])->name('index');
       Route::post('', [UserController::class, 'store'])->name('store');
@@ -60,10 +62,15 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
       Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
     });
 
-
-    Route::group(['prefix' => '/cities', 'as' => 'cities.'], function () {
-      Route::get('/ajax', [CityController::class, 'ajaxCities'])->name('ajaxCities');
+    Route::group(['prefix' => '/notifications', 'as' => 'notifications.'], function () {
+      Route::get('', [NotificationController::class, 'index'])->name('index');
+      Route::get('/{notification_id}/read', [NotificationController::class, 'read'])->name('read');
+      Route::get('mark-all-as-read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsRead');
     });
+  });
+
+  Route::group(['middleware' => 'auth', 'prefix' => '/cities', 'as' => 'cities.'], function () {
+    Route::get('/ajax', [CityController::class, 'ajaxCities'])->name('ajaxCities');
   });
 });
 

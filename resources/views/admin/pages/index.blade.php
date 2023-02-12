@@ -7,8 +7,11 @@
         <div class="col-xl-3 col-xxl-3 col-sm-6">
             <div class="widget-stat card bg-primary overflow-hidden">
                 <div class="card-header">
-                    <h3 class="card-title text-white">Total Students</h3>
-                    <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 422</h5>
+                    <h3 class="card-title text-white">Total Users</h3>
+                    <h5 class="text-white mb-0">
+                        <i class="fa fa-caret-up"></i>
+                        {{ \App\Models\User::count() }}
+                    </h5>
                 </div>
                 <div class="card-body text-center mt-3">
                     <div class="ico-sparkline">
@@ -20,7 +23,7 @@
         <div class="col-xl-3 col-xxl-3 col-sm-6">
             <div class="widget-stat card bg-success overflow-hidden">
                 <div class="card-header">
-                    <h3 class="card-title text-white">New Students</h3>
+                    <h3 class="card-title text-white">New Users</h3>
                     <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 357</h5>
                 </div>
                 <div class="card-body text-center mt-4 p-0">
@@ -33,7 +36,7 @@
         <div class="col-xl-3 col-xxl-3 col-sm-6">
             <div class="widget-stat card bg-secondary overflow-hidden">
                 <div class="card-header pb-3">
-                    <h3 class="card-title text-white">Total Course</h3>
+                    <h3 class="card-title text-white">Total Templates</h3>
                     <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 547</h5>
                 </div>
                 <div class="card-body p-0 mt-2">
@@ -43,6 +46,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <div class="col-xl-3 col-xxl-3 col-sm-6">
             <div class="widget-stat card bg-danger overflow-hidden">
                 <div class="card-header pb-3">
@@ -54,26 +60,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 col-xxl-6 col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Income/Expense Report</h3>
-                </div>
-                <div class="card-body">
-                    <canvas id="barChart_2"></canvas>
-                </div>
-            </div>
+
+        <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-12 col-sm-12">
+            @include('admin.partials._notifications-card')
         </div>
-        <div class="col-xl-6 col-xxl-6 col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Income/Expense Report</h3>
-                </div>
-                <div class="card-body">
-                    <canvas id="areaChart_1"></canvas>
-                </div>
-            </div>
-        </div>
+
         <div class="col-xl-8 col-xxl-8 col-lg-8 col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
@@ -177,138 +168,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-12 col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Notifications</h4>
-                </div>
-                <div class="card-body">
-                    <div class="widget-todo dz-scroll" style="height:370px;" id="DZ_W_Notifications">
-                        <ul class="timeline">
-                            <li>
-                                <div class="timeline-badge primary"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic1.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Dr sultads Send you Photo</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge warning"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic2.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Resport created successfully</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge danger"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic3.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Reminder : Treatment Time!</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge success"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic4.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Dr sultads Send you Photo</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge warning"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic5.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Resport created successfully</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge dark"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic6.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Reminder : Treatment Time!</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge info"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic7.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Dr sultads Send you Photo</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge danger"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic8.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Resport created successfully</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge success"></div>
-                                <a class="timeline-panel text-muted mb-3 d-flex align-items-center"
-                                    href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic9.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Reminder : Treatment Time!</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="timeline-badge warning"></div>
-                                <a class="timeline-panel text-muted d-flex align-items-center" href="javascript:void(0);">
-                                    <img class="rounded-circle" alt="image" width="50"
-                                        src="{{ asset('backend/images/profile/education/pic10.jpg') }}">
-                                    <div class="col">
-                                        <h5 class="mb-1">Dr sultads Send you Photo</h5>
-                                        <small class="d-block">29 July 2021 - 02:26 PM</small>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
