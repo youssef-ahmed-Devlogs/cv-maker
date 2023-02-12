@@ -78,14 +78,49 @@
         </div>
     </section>
 
+
+
+
     <div id="additional-sections">
         {{-- <section id="education">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title">Experience</h2>
 
-            <button class="add-more" type="button">
-                <i class="fas fa-plus"></i>
-                Add More
-            </button>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="form-item">
+                        <label for="company">Company</label>
+                        <input type="text" class="form-control onKeyUpEvent" name="company" placeholder="Company">
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="form-item">
+                        <label for="job_title">Job Title</label>
+                        <input type="text" class="form-control onKeyUpEvent" name="job_title"
+                            placeholder="Job Title">
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="form-item">
+                        <label for="university_start_date">Start Date</label>
+                        <input type="date" class="form-control onChangeEvent" id="university_start_date"
+                            name="university_start_date">
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="form-item">
+                        <label for="university_end_date">End Date</label>
+                        <input type="date" class="form-control onChangeEvent" id="university_end_date"
+                            name="university_end_date">
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="form-item">
+                        <label for="university_description">Description</label>
+                        <textarea name="university_description" id="university_description" class="form-control onKeyUpEvent"
+                            placeholder="Description" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
         </section> --}}
     </div>
 
