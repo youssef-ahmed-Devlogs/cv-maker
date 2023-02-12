@@ -2,7 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('cv_templates/template.css') }}">
-    <link rel="stylesheet" href="{{ asset('cv_templates/template_5/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('cv_templates/template_1/style.css') }}">
 @endsection
 
 @section('content')
