@@ -103,6 +103,7 @@
                                 <div class="price">
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
                                         <span class="before-discount d-block">$0.00</span>
+
                                         <span class="text-primary bg-primary-opacity fw-bold after-discount d-block">
                                             {{ __('frontend.subscription_save') }} 100%
                                         </span>
@@ -114,6 +115,7 @@
                                         /{{ __('frontend.subscription_per_month') }}
                                     </div>
                                 </div>
+
                                 <a href="{{ route('frontend.templates') }}" class="subscripe-btn btn btn-primary">
                                     {{ __('frontend.subscription_start_button_text') }}
                                 </a>

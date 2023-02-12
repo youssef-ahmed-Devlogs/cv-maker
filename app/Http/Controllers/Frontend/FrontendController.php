@@ -62,10 +62,8 @@ class FrontendController extends Controller
             'name' => ['required', 'min:3', 'max:30'],
             'email' => ['required', 'email', "unique:users,email,$currentUser->id"],
             'age' => ['required', 'numeric', 'min:15', 'max:70'],
-            'phone' => ['required', 'numeric', 'digits_between:11,11'],
+            'phone' => ['nullable', 'numeric', 'digits_between:11,11'],
             'gender' => ['required', 'in:male,female'],
-            'country_id' => ['required'],
-            'city_id' => ['required'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
             'about_me' => ['nullable', 'max:5000'],
         ]);

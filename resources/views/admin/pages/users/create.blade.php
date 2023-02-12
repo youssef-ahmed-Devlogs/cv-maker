@@ -38,6 +38,7 @@
                     <div class="col-xl-6">
                         <div class="form-group">
                             <label class="control-label">Password</label>
+
                             <input type="password" class="form-control" name="password" placeholder="Enter password"
                                 value="{{ old('password') }}" />
 
@@ -86,6 +87,7 @@
                     <div class="col-xl-6">
                         <div class="form-group">
                             <label>Gender</label>
+
                             <select class="form-control" name="gender">
                                 <option value="male" {{ old('male') == 'male' ? 'selected' : '' }}>Male</option>
                                 <option value="female" {{ old('male') == 'male' ? 'selected' : '' }}>Female</option>

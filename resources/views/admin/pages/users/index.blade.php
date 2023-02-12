@@ -46,6 +46,7 @@
                                             <img class="rounded-circle" style="width: 40px;height: 40px;object-fit: cover"
                                                 src="{{ $user->photo() }}" alt="">
                                         </td>
+
                                         <td>
                                             <a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a>
                                         </td>

@@ -13,6 +13,7 @@
                 <button id="download-button" class="btn btn-xl btn-primary">
                     Download
                 </button>
+
                 <select id="download-options" class="form-control">
                     <option value="png">PNG</option>
                     <option value="jpeg">JPG</option>
@@ -41,6 +42,7 @@
                             <i class="fas fa-envelope"></i>
                             youssef@gmail.com
                         </span>
+
                         <span class="template_header_phone">
                             <i class="fas fa-phone"></i>
                             01154214028
