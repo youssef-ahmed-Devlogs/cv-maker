@@ -15,6 +15,25 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/index-ar.css') }}" />
     @endif
 
+    <style>
+        #site-ads {
+            width: 270px;
+            padding: 10px;
+            position: absolute;
+        }
+
+        #site-ads .single-ad {
+            margin-bottom: 10px;
+        }
+
+        #site-ads .single-ad img {
+            width: 100%;
+            height: 400px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    </style>
+
     @yield('styles')
 </head>
 
@@ -25,6 +44,8 @@
 
     <!-- ====================== START MAIN CONTENT ====================== -->
     <main>
+
+
         @yield('content')
     </main>
     <!-- ====================== END MAIN CONTENT ====================== -->

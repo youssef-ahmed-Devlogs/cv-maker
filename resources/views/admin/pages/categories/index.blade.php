@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Users List')
+@section('title', 'Categories List')
 
 @section('styles')
 @endsection
@@ -12,12 +12,12 @@
             <a href="{{ route('admin.users.create') }}"
                 class="btn-create btn btn-primary mb-3 d-inline-flex align-items-center" style="gap: 5px">
                 <i class="fas fa-plus"></i>
-                Add User
+                Add Category
             </a>
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Users List</h4>
+                    <h4 class="card-title">Categories List</h4>
                 </div>
 
                 <div class="card-body">
@@ -26,10 +26,14 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Title</th>
-                                    <th>Descripiton</th>
-                                    <th>Created By</th>
-                                    <th>Created Date</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>Role</th>
+                                    <th>Phone</th>
+                                    <th>Country</th>
+                                    <th>City</th>
+                                    <th>Joining Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -42,6 +46,7 @@
                                             <img class="rounded-circle" style="width: 40px;height: 40px;object-fit: cover"
                                                 src="{{ $user->photo() }}" alt="">
                                         </td>
+
                                         <td>
                                             <a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a>
                                         </td>
@@ -53,6 +58,7 @@
                                             @else
                                                 <span class="badge badge-rounded badge-primary">{{ $user->role }}</span>
                                             @endif
+
                                         </td>
                                         <td>{{ $user->phone ? $user->phone : 'Unknown' }}</td>
                                         <td>{{ $user->country ? $user->country->name() : 'Unknown' }}</td>
