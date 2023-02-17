@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('cover');
-            $table->string('template_code');
+            $table->text('template_code');
+            $table->string('is_free');
             $table->foreignId('created_by')->constrained('users', 'id')->cascadeOnUpdate();
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate();
             $table->timestamps();
