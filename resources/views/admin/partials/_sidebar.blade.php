@@ -32,10 +32,10 @@
                 </a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="all-students.html">Categories List</a>
+                        <a href="{{ route('admin.categories.index') }}">Categories List</a>
                     </li>
                     <li>
-                        <a href="add-student.html">Add Category</a>
+                        <a href="{{ route('admin.categories.create') }}">Add Category</a>
                     </li>
                 </ul>
             </li>

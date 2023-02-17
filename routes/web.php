@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::post("/localization", [LocalizationController::class, 'changeLanguage'])->name('localization.change_language');
@@ -67,6 +69,9 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
       Route::get('/{notification_id}/read', [NotificationController::class, 'read'])->name('read');
       Route::get('mark-all-as-read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsRead');
     });
+
+    Route::resource('categories', CategoryController::class);
+    Route::resource('templates', TemplateController::class);
   });
 
   Route::group(['middleware' => 'auth', 'prefix' => '/cities', 'as' => 'cities.'], function () {

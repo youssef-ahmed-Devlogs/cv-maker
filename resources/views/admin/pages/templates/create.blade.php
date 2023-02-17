@@ -6,14 +6,14 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.categories.store') }}" method="POST">
+            <form action="{{ route('admin.templates.store') }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
 
                 <div class="row">
                     <div class="col-xl-6 mb-2">
                         <div class="form-group">
-                            <label class="control-label">Title</label>
+                            <label class="control-label">Name</label>
                             <input type="text" class="form-control" name="title_en" placeholder="Enter title english"
                                 value="{{ old('title_en') }}" />
 
@@ -23,13 +23,11 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-6 mb-2">
+                    <div class="col-xl-12 mb-2">
                         <div class="form-group">
-                            <label class="control-label">العنوان</label>
-                            <input type="text" class="form-control" name="title_ar"
-                                placeholder="أدخل العنوان باللغة العربية" value="{{ old('title_ar') }}" />
-
-                            @error('title_ar')
+                            <label class="control-label">Template</label>
+                            <textarea name="template_code" class="form-control" cols="30" rows="10" style="height: 600px;"></textarea>
+                            @error('template_code')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
