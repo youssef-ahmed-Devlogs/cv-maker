@@ -48,10 +48,10 @@
 
                 <ul aria-expanded="false">
                     <li>
-                        <a href="all-students.html">Templates List</a>
+                        <a href="{{ route('admin.templates.index') }}">Templates List</a>
                     </li>
                     <li>
-                        <a href="add-student.html">Add Template</a>
+                        <a href="{{ route('admin.templates.create') }}">Add Template</a>
                     </li>
                 </ul>
             </li>

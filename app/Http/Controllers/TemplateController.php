@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -20,7 +21,8 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.templates.index');
+        $templates = Template::all();
+        return view('admin.pages.templates.index', compact('templates'));
     }
 
     /**
@@ -30,7 +32,8 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.templates.create');
+        $categories = Category::all();
+        return view('admin.pages.templates.create', compact('categories'));
     }
 
     /**
@@ -42,16 +45,25 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'min:3'],
+            'name_en' => ['required', 'min:3'],
+            'name_ar' => ['required', 'min:3'],
             'cover' => ['required', 'image'],
             'template_code' => ['required', 'min:10'],
             'category_id' => ['required'],
+            'is_free' => ['required'],
         ]);
 
         $template = $request->all();
         $template['cover'] = $request->cover->store('templates', 'public');
 
-        Template::create($template);
+        Template::create([
+            ...$template,
+            'name' => json_encode([
+                'en' => $request->name_en,
+                'ar' => $request->name_ar,
+            ], JSON_UNESCAPED_UNICODE),
+            'created_by' => auth()->id()
+        ]);
 
         toastr()->success('Template created successfully');
         return back();

@@ -129,7 +129,7 @@
                                 @endforeach
                             </select>
 
-                            @error('country')
+                            @error('country_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -142,7 +142,7 @@
                                 <option value="" selected disabled>Select</option>
                             </select>
 
-                            @error('city')
+                            @error('city_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
