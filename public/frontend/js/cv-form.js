@@ -243,8 +243,8 @@ function handleKeyUpEvent(event) {
 function handleOnChangeEvent(event) {
     const input = event.target;
 
-    setDOMElement(input, "date_of_birth", "template_person_date_of_birth");
-    setDOMElement(input, "nationality", "template_person_nationality");
+    setDOMElement(input, "date_of_birth", "#template_person_date_of_birth");
+    setDOMElement(input, "nationality", "#template_person_nationality");
 
     setDOMElement(
         input,

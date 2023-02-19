@@ -5,11 +5,11 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LocalizationController;
-use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::post("/localization", [LocalizationController::class, 'changeLanguage'])->name('localization.change_language');

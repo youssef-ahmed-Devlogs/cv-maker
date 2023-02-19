@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Template;
 use Illuminate\Http\Request;
@@ -45,8 +46,6 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name_en' => ['required', 'min:3'],
-            'name_ar' => ['required', 'min:3'],
             'cover' => ['required', 'image'],
             'template_code' => ['required', 'min:10'],
             'category_id' => ['required'],
@@ -55,15 +54,9 @@ class TemplateController extends Controller
 
         $template = $request->all();
         $template['cover'] = $request->cover->store('templates', 'public');
+        $template['created_by'] = auth()->id();
 
-        Template::create([
-            ...$template,
-            'name' => json_encode([
-                'en' => $request->name_en,
-                'ar' => $request->name_ar,
-            ], JSON_UNESCAPED_UNICODE),
-            'created_by' => auth()->id()
-        ]);
+        Template::create($template);
 
         toastr()->success('Template created successfully');
         return back();
@@ -88,7 +81,8 @@ class TemplateController extends Controller
      */
     public function edit(Template $template)
     {
-        //
+        $categories = Category::all();
+        return view('admin.pages.templates.edit', compact('categories', 'template'));
     }
 
     /**
@@ -100,7 +94,22 @@ class TemplateController extends Controller
      */
     public function update(Request $request, Template $template)
     {
-        //
+        $request->validate([
+            'cover' => ['nullable', 'image'],
+            'template_code' => ['required', 'min:10'],
+            'category_id' => ['required'],
+            'is_free' => ['required'],
+        ]);
+
+        $updatedTemplate = $request->all();
+
+        if ($request->hasFile('cover'))
+            $updatedTemplate['cover'] = $request->cover->store('templates', 'public');
+
+        $template->update($updatedTemplate);
+
+        toastr()->success('Template created successfully');
+        return back();
     }
 
     /**

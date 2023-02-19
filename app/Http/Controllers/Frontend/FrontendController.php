@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Template;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -37,12 +38,14 @@ class FrontendController extends Controller
 
     public function templates()
     {
-        return view('frontend.pages.templates');
+        $templates = Template::all();
+        return view('frontend.pages.templates', compact('templates'));
     }
 
     public function create()
     {
-        return view('frontend.pages.create');
+        $templateView = Template::findOrFail(request()->get('template'));
+        return view('frontend.pages.create', compact('templateView'));
     }
 
     public function myCvs()

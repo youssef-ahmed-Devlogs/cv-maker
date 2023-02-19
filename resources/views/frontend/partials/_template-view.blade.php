@@ -175,10 +175,10 @@
                         <span class="template_rating_list_item_text">Photoshop</span>
 
                         <div class="template_rating_list_item_points bullet">
-                            <span class="template_rating_list_item_point bullet  active"></span>
-                            <span class="template_rating_list_item_point bullet  active"></span>
-                            <span class="template_rating_list_item_point bullet  active"></span>
-                            <span class="template_rating_list_item_point bullet "></span>
+                            <span class="template_rating_list_item_point bullet active"></span>
+                            <span class="template_rating_list_item_point bullet active"></span>
+                            <span class="template_rating_list_item_point bullet active"></span>
+                            <span class="template_rating_list_item_point bullet"></span>
                         </div>
                     </li>
                 </ul>

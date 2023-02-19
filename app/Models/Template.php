@@ -11,20 +11,12 @@ class Template extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'cover',
         'template_code',
         'is_free',
         'created_by',
         'category_id',
     ];
-
-    public function name($lang = null)
-    {
-        if (!$lang)
-            $lang = Session::get('locale');
-        return json_decode($this->name)->$lang;
-    }
 
     public function cover()
     {

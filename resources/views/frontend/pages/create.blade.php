@@ -13,7 +13,8 @@
 
         <div class="cv-preview">
             {{-- Template Veiew --}}
-            @include('frontend.partials._template-view')
+            {!! $templateView->template_code !!}
+            {{-- @include('frontend.partials._template-view') --}}
 
             <div class="actions">
                 <button class="btn btn-primary d-flex">

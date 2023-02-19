@@ -9,12 +9,6 @@
                 </div>
                 <div class="col-xl-8">
                     <ul class="links d-flex align-items-center flex-wrap gap-4">
-                        <a href="{{ route('frontend.my_account') }}">
-                            {{ __('frontend.my_account') }}
-                        </a>
-                        <a href="{{ route('frontend.templates') }}">
-                            {{ __('frontend.templates') }}
-                        </a>
                         <a href="{{ route('frontend.about') }}">
                             {{ __('frontend.about') }}
                         </a>

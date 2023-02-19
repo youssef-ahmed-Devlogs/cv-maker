@@ -25,8 +25,7 @@
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Name</th>
+                                    <th>Cover</th>
                                     <th>Free</th>
                                     <th>Category</th>
                                     <th>Created By</th>
@@ -40,32 +39,32 @@
                                 @foreach ($templates as $template)
                                     <tr>
                                         <td>
-                                            <img class="rounded-circle" style="width: 40px;height: 40px;object-fit: cover"
+                                            <img class="rounded" style="width: 190px;height: 290px;object-fit: cover"
                                                 src="{{ $template->cover() }}" alt="">
                                         </td>
-
-                                        <td>{{ $template->name() }}</td>
                                         <td>{{ $template->isFree == 1 ? 'Free' : 'Subscription' }}</td>
                                         <td>{{ $template->category->title() }}</td>
                                         <td>{{ $template->createdBy->name }}</td>
                                         <td>{{ $template->created_at }}</td>
 
-                                        <td class="d-flex align-items-center" style="gap: 5px">
-                                            <a href="{{ route('admin.templates.edit', $template->id) }}"
-                                                class="btn btn-sm btn-primary">
-                                                <i class="la la-pencil"></i>
-                                            </a>
+                                        <td>
+                                            <div class="d-flex align-items-center" style="gap: 5px;">
+                                                <a href="{{ route('admin.templates.edit', $template->id) }}"
+                                                    class="btn btn-sm btn-primary">
+                                                    <i class="la la-pencil"></i>
+                                                </a>
 
-                                            <form action="{{ route('admin.templates.destroy', $template->id) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
+                                                <form action="{{ route('admin.templates.destroy', $template->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                <button class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('Are you sure you want to delete this template?')">
-                                                    <i class="la la-trash-o"></i>
-                                                </button>
-                                            </form>
+                                                    <button class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this template?')">
+                                                        <i class="la la-trash-o"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
 
                                     </tr>

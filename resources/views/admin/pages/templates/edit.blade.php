@@ -1,45 +1,85 @@
 @extends('admin.layout.app')
 
-@section('title', 'Edit Category')
+@section('title', 'Edit Template')
 
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
+            <form action="{{ route('admin.templates.update', $template) }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('patch')
 
                 <div class="row">
-                    <div class="col-xl-6 mb-2">
+                    <div class="col-xl-12 mb-2">
                         <div class="form-group">
-                            <label class="control-label">Title</label>
-                            <input type="text" class="form-control" name="title_en" placeholder="Enter the english title"
-                                value="{{ old('title_en') ? old('title_en') : $category->title('en') }}" />
-
-                            @error('title_en')
+                            <label class="control-label">Template Code</label>
+                            <textarea name="template_code" class="form-control" cols="30" rows="10" style="height: 600px;">{{ $template->template_code }}</textarea>
+                            @error('template_code')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="col-xl-6 mb-2">
+                    <div class="col-xl-6">
                         <div class="form-group">
-                            <label class="control-label">العنوان</label>
-                            <input type="text" class="form-control" name="title_ar"
-                                placeholder="أدخل العنوان باللغة العربية"
-                                value="{{ old('title_ar') ? old('title_ar') : $category->title('ar') }}" />
+                            <label>Category</label>
+                            <select class="form-control" name="category_id" id="category_id">
+                                <option value="" selected disabled>Select</option>
 
-                            @error('title_ar')
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ $template->category->id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->title() }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('category_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label>Is Free</label>
+                            <select class="form-control" name="is_free" id="is_free">
+                                <option value="" selected disabled>Select</option>
+
+                                <option value="1" {{ $template->is_free == 1 ? 'selected' : '' }}>Yes</option>
+                                <option value="0" {{ $template->is_free == 0 ? 'selected' : '' }}>No</option>
+                            </select>
+
+                            @error('is_free')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <label class="control-label">Cover</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="cover">
+                                <label class="custom-file-label">Choose cover</label>
+                            </div>
+                        </div>
+
+                        @error('cover')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+
+                    </div>
+
+                    <div class="col-xl-4 mx-auto">
+                        <img src="{{ $template->cover() }}" class="w-100" style="border-radius: 10px">
                     </div>
                 </div>
 
                 <button class="btn btn-success mt-2 d-inline-flex align-items-center" style="gap: 5px">
-                    <i class="fas fa-pen"></i>
+                    <i class="fas fa-plus"></i>
                     Update
                 </button>
             </form>
@@ -49,26 +89,5 @@
 
 
 @section('scripts')
-    <script>
-        $('#country_id').on('change', function(e) {
-            const country_id = e.target.value;
-            fetchCities(country_id);
-        })
 
-        function fetchCities(country_id) {
-            $.ajax({
-                url: `{{ route('admin.cities.ajaxCities') }}?country_id=${country_id}`,
-                method: 'GET',
-            }).done(function(cities) {
-                $("#city_id").empty();
-
-                cities.forEach((city) => {
-                    const name = JSON.parse(city.name)["name_{{ Session::get('locale') }}"];
-                    $("#city_id").append(new Option(name, city.id));
-                });
-
-                $('#city_id').selectpicker('refresh');
-            });
-        }
-    </script>
 @endsection
