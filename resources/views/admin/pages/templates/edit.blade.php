@@ -15,7 +15,8 @@
                     <div class="col-xl-12 mb-2">
                         <div class="form-group">
                             <label class="control-label">Template Code</label>
-                            <textarea name="template_code" class="form-control" cols="30" rows="10" style="height: 600px;">{{ $template->template_code }}</textarea>
+                            <textarea name="template_code" style="font-family: Arial, Helvetica, sans-serif" class="form-control" cols="30"
+                                rows="10" style="height: 600px;">{{ $template->template_code }}</textarea>
                             @error('template_code')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
