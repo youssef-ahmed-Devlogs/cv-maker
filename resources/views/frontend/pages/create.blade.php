@@ -2,7 +2,6 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('cv_templates/template.css') }}">
-    <link rel="stylesheet" href="{{ asset('cv_templates/template_1/style.css') }}">
 @endsection
 
 @section('content')
@@ -13,7 +12,7 @@
 
         <div class="cv-preview">
             {{-- Template Veiew --}}
-            {!! $templateView->template_code !!}
+            {!! $templateView !!}
             {{-- @include('frontend.partials._template-view') --}}
 
             <div class="actions">
