@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
+use App\Http\Controllers\Frontend\CvController;
+use App\Http\Controllers\Frontend\EducationController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +32,12 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
     Route::get('create', [FrontendController::class, 'create'])->name('create');
     Route::get('download', [FrontendController::class, 'download'])->name('download');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('{template}/create', [CvController::class, 'create'])->name('cvs.create');
+    Route::get('{cv}/cv', [CvController::class, 'edit'])->name('cvs.edit');
+    Route::patch('{cv}/update', [CvController::class, 'update'])->name('cvs.update');
+
+    Route::get('{cv}/education/components/formSection', [EducationController::class, 'addSection'])->name('education.components.formSection');
   });
 
   Route::get('', [FrontendController::class, 'index'])->name('index');

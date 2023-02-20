@@ -87,9 +87,9 @@
             <!-- Start Template Small Section -->
             <div class="template_sm_section">
                 <h5 class="template_sm_section_title">
-                    Nationality
+                    Country
                 </h5>
-                <p class="template_sm_section_text" id="template_person_nationality">Egyptian</p>
+                <p class="template_sm_section_text" id="template_person_country">Egypt</p>
             </div>
             <!-- End Template Small Section -->
 

@@ -1,9 +1,12 @@
-<form id="cvForm">
+<form action="{{ route('frontend.cvs.update', $cv) }}" method="POST" id="cvForm">
+    @csrf
+    @method('PATCH')
+
     <section id="main-information">
         <h2 class="section-title">Main Information</h2>
 
         <div class="row">
-            <div class="col-xl-12">
+            {{-- <div class="col-xl-12">
                 <div class="form-uploader-item">
                     <label for="photo" class="form-uploader-label" title="Upload Photo">
                         <div class="content">
@@ -13,115 +16,95 @@
                     </label>
                     <input type="file" class="form-uploader onFileUploadEvent" id="photo" name="photo" />
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-xl-6">
                 <div class="form-item">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control onKeyUpEvent" name="name" placeholder="Name" />
+                    <input type="text" class="form-control main-input" name="name" placeholder="Name"
+                        value="{{ $cv->name }}" />
                 </div>
             </div>
 
             <div class="col-xl-6">
                 <div class="form-item">
-                    <label for="title">Your Title</label>
-                    <input type="text" class="form-control onKeyUpEvent" name="title" placeholder="Title" />
+                    <label for="job_title">Job Title</label>
+                    <input type="text" class="form-control main-input" name="job_title" placeholder="Job Title"
+                        value="{{ $cv->job_title }}" />
                 </div>
             </div>
 
             <div class="col-xl-6">
                 <div class="form-item">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control onKeyUpEvent" name="email" placeholder="Email" />
+                    <input type="email" class="form-control main-input" name="email" placeholder="Email"
+                        value="{{ $cv->email }}" />
                 </div>
             </div>
 
             <div class="col-xl-6">
                 <div class="form-item">
                     <label for="phone">Phone</label>
-                    <input type="number" class="form-control onKeyUpEvent" name="phone" placeholder="Phone" />
+                    <input type="number" class="form-control main-input" name="phone" placeholder="Phone"
+                        value="{{ $cv->phone }}" />
                 </div>
             </div>
 
             <div class="col-xl-6">
                 <div class="form-item">
                     <label for="date_of_birth">Date of Birth</label>
-                    <input type="date" class="form-control onChangeEvent" id="date_of_birth" name="date_of_birth" />
+                    <input type="date" class="form-control main-input" id="date_of_birth" name="date_of_birth"
+                        value="{{ $cv->date_of_birth }}" />
                 </div>
             </div>
 
             <div class="col-xl-6">
+
+                @php
+                    $countries = \App\Models\Country::all();
+                @endphp
+
                 <div class="form-item">
-                    <label for="nationality">Nationality</label>
-                    <select name="nationality" class="form-control onChangeEvent">
-                        <option value="" disabled selected>Nationality</option>
-                        <option value="Egyptian">Egyptian</option>
-                        <option value="united status">US</option>
+                    <label for="country">Country</label>
+                    <select name="country" class="form-control main-input">
+                        <option value="" disabled selected>Country</option>
+                        @foreach ($countries as $country)
+                            <option value="{{ ucfirst($country->name('en')) }}"
+                                {{ ucfirst($cv->country) == ucfirst($country->name('en')) ? 'selected' : '' }}>
+                                {{ $country->name('en') }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
 
             <div class="col-xl-12">
                 <div class="form-item">
-                    <label for="dateOfBirth">Address</label>
-                    <input type="text" class="form-control onKeyUpEvent" name="address" placeholder="Address" />
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control main-input" name="address" placeholder="Address"
+                        value="{{ $cv->address }}" />
                 </div>
             </div>
 
             <div class="col-xl-12">
                 <div class="form-item">
-                    <label for="dateOfBirth">About Me</label>
-                    <textarea name="about_me" id="about_me" class="form-control onKeyUpEvent" placeholder="Description about you"
-                        cols="30" rows="5"></textarea>
+                    <label for="about_me">About Me</label>
+                    <textarea name="about_me" id="about_me" class="form-control main-input" placeholder="Description about you"
+                        cols="30" rows="5">{{ $cv->about_me }}</textarea>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-
-    <div id="additional-sections">
-        {{-- <section id="education">
-            <h2 class="section-title">Experience</h2>
-
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="form-item">
-                        <label for="company">Company</label>
-                        <input type="text" class="form-control onKeyUpEvent" name="company" placeholder="Company">
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="form-item">
-                        <label for="job_title">Job Title</label>
-                        <input type="text" class="form-control onKeyUpEvent" name="job_title"
-                            placeholder="Job Title">
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="form-item">
-                        <label for="university_start_date">Start Date</label>
-                        <input type="date" class="form-control onChangeEvent" id="university_start_date"
-                            name="university_start_date">
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="form-item">
-                        <label for="university_end_date">End Date</label>
-                        <input type="date" class="form-control onChangeEvent" id="university_end_date"
-                            name="university_end_date">
-                    </div>
-                </div>
-                <div class="col-xl-12">
-                    <div class="form-item">
-                        <label for="university_description">Description</label>
-                        <textarea name="university_description" id="university_description" class="form-control onKeyUpEvent"
-                            placeholder="Description" cols="30" rows="5"></textarea>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
+    {{-- Additional Sections --}}
+    <div id="additional_form_sections">
+        @foreach ($cv->educations as $education)
+            @if ($loop->index == 0)
+                @include('template_components.educations.form.section', $education)
+            @else
+                @include('template_components.educations.form.item', $education)
+            @endif
+        @endforeach
     </div>
 
 
@@ -129,27 +112,28 @@
         <h2 class="section-title">Other Sections</h2>
 
         <div class="add-section-buttons d-flex align-items-center gap-2">
-            <button id="add-education-button" type="button" class="add-section-button" data-section_name="Education">
+            <button id="add-education-button" type="button" class="add-section-button"
+                {{ $cv->educations->count() > 0 ? 'disabled' : '' }}>
                 <i class="fas fa-plus"></i>
                 Education
             </button>
 
-            <button id="add-experience-button" type="button" class="add-section-button" data-section_name="Experience">
+            <button id="add-experience-button" type="button" class="add-section-button">
                 <i class="fas fa-plus"></i>
                 Experience
             </button>
 
-            <button id="add-projects-button" type="button" class="add-section-button" data-section_name="Projects">
+            <button id="add-projects-button" type="button" class="add-section-button">
                 <i class="fas fa-plus"></i>
                 Projects
             </button>
 
-            <button id="add-languages-button" type="button" class="add-section-button" data-section_name="Languages">
+            <button id="add-languages-button" type="button" class="add-section-button">
                 <i class="fas fa-plus"></i>
                 Languages
             </button>
 
-            <button id="add-skills-button" type="button" class="add-section-button" data-section_name="Skills">
+            <button id="add-skills-button" type="button" class="add-section-button">
                 <i class="fas fa-plus"></i>
                 Skills
             </button>

@@ -39,7 +39,7 @@
                                 </div>
                             </div>
 
-                            <a href="{{ route('frontend.create') }}?template={{ $template->id }}" class="swiper-image">
+                            <a href="{{ route('frontend.cvs.create', $template) }}" class="swiper-image">
                                 <img class="w-100" src="{{ $template->cover() }}" alt="" />
                             </a>
                         </div>

@@ -10,9 +10,12 @@ class Country extends Model
 {
     use HasFactory;
 
-    public function name()
+    public function name($lang = null)
     {
-        $lang = "name_" . Session::get('locale');
+        if ($lang)
+            $lang = "name_" . $lang;
+        else
+            $lang = "name_" . Session::get('locale');
         return json_decode($this->name)->$lang;
     }
 }
