@@ -18,17 +18,75 @@ mainInformationInputs.forEach((input) => {
     });
 });
 
-function appendSectionToForm(section, sectionSelector) {
-    $(sectionSelector).append(section);
+// ===== START WORKING WITH SECTIONS =====
+
+// On click on remove section this method will remove the appropriate section
+onRemoveSection();
+
+onSectionDataChange([
+    "education",
+    "experience",
+    "project",
+    "skill",
+    "language",
+]);
+
+// ===== END WORKING WITH SECTIONS =====
+
+function onSectionDataChange(sectionNames) {
+    sectionNames.forEach((sectionName) => {
+        let sectionData = {};
+        const sectionInputs = document.querySelectorAll(
+            `.${sectionName}_input`
+        );
+
+        sectionInputs.forEach((input) => {
+            input.addEventListener("change", (e) => {
+                sectionData.id = e.target.dataset.id;
+                sectionData[e.target.name] = e.target.value;
+
+                ajaxUpdate({
+                    [sectionName]: sectionData,
+                });
+            });
+        });
+    });
 }
 
-function appendSectionToTemplate(section, sectionSelector) {
-    $(sectionSelector).append(section);
+function onRemoveSection() {
+    document.querySelectorAll(".remove-section").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            switch (btn.dataset.section_name) {
+                case "educations":
+                    ajaxDeleteEducationSection();
+                    break;
+                case "experiences":
+                    ajaxDeleteExperienceSection();
+                    break;
+                case "projects":
+                    ajaxDeleteProjectSection();
+                    break;
+            }
+        });
+    });
+}
+
+function removeSection(sectionName) {
+    $(`#${sectionName}`).remove();
+    $(`#template_${sectionName}`).remove();
+}
+
+function appendSection(sections) {
+    $(sections.form.selector).append(sections.form.html);
+    $(sections.template.selector).append(sections.template.html);
+    $(sections.addButton).attr("disabled", true);
 }
 
 function livePreview(data) {
     livePreviewMainData(data);
     livePreviewEducationData(data);
+    livePreviewExperiencesData(data);
+    livePreviewProjectsData(data);
 }
 
 function livePreviewMainData(data) {
@@ -45,6 +103,7 @@ function livePreviewMainData(data) {
 
 function livePreviewEducationData(data) {
     const educationsData = data.educations;
+
     educationsData.forEach((education) => {
         $("#template_university").text(education.university);
         $("#template_university_specialization").text(
@@ -57,5 +116,29 @@ function livePreviewEducationData(data) {
         $("#template_university_description").text(
             education.university_description
         );
+    });
+}
+
+function livePreviewExperiencesData(data) {
+    const experiencesData = data.experiences;
+
+    experiencesData.forEach((experience) => {
+        $("#template_company").text(experience.company);
+        $("#template_company_job_title").text(experience.company_job_title);
+        $("#template_company_start_date").text(experience.company_start_date);
+        $("#template_company_end_date").text(experience.company_end_date);
+        $("#template_company_description").text(experience.company_description);
+    });
+}
+
+function livePreviewProjectsData(data) {
+    const projectsData = data.projects;
+
+    projectsData.forEach((project) => {
+        $("#template_project_title").text(project.project_title);
+        $("#template_project_name").text(project.project_name);
+        $("#template_project_start_date").text(project.project_start_date);
+        $("#template_project_end_date").text(project.project_end_date);
+        $("#template_project_description").text(project.project_description);
     });
 }

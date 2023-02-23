@@ -8,6 +8,6 @@
     </h2>
 
     <div id="education_inputs">
-        @include('template_components.educations.form.item')
+        @include('cv_sections_components.educations.form.item')
     </div>
 </section>

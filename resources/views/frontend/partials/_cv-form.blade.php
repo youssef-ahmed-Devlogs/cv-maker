@@ -1,4 +1,4 @@
-<form action="{{ route('frontend.cvs.update', $cv) }}" method="POST" id="cvForm">
+<form id="cvForm">
     @csrf
     @method('PATCH')
 
@@ -99,12 +99,78 @@
     {{-- Additional Sections --}}
     <div id="additional_form_sections">
         @foreach ($cv->educations as $education)
-            @if ($loop->index == 0)
-                @include('template_components.educations.form.section', $education)
-            @else
-                @include('template_components.educations.form.item', $education)
-            @endif
+            @include('cv_sections_components.educations.form.section', $education)
         @endforeach
+
+        @foreach ($cv->experiences as $experience)
+            @include('cv_sections_components.experiences.form.section', $experience)
+        @endforeach
+
+        @foreach ($cv->projects as $project)
+            @include('cv_sections_components.projects.form.section', $project)
+        @endforeach
+
+
+        <section id="languages_section">
+            <h2 class="section-title">
+                Languages
+
+                <span class="remove-section" data-section_name="languages">
+                    <i class="fas fa-times"></i>
+                </span>
+            </h2>
+
+            <div id="language_inputs">
+                <div class="row mb-3" id="languages_inputs_item_id">
+                    <div class="col-xl-6">
+                        <div class="form-item">
+                            <label for="language_name">Language Name</label>
+                            <input type="text" class="form-control" name="language_names[]"
+                                placeholder="Language Name">
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="form-item">
+                            <label for="language_level">Level</label>
+                            <input type="text" class="form-control" name="language_levels[]" placeholder="Level">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3" id="languages_inputs_item_id">
+
+                    <span class="remove_language_input_item" data-id="id">
+                        <i class="fas fa-times"></i>
+                    </span>
+
+                    <div class="col-xl-6">
+                        <div class="form-item">
+                            <label for="language_name">Language Name</label>
+                            <input type="text" class="form-control" name="language_names[]"
+                                placeholder="Language Name">
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="form-item">
+                            <label for="language_level">Level</label>
+                            <input type="text" class="form-control" name="language_levels[]" placeholder="Level">
+                        </div>
+                    </div>
+                </div>
+
+                {{-- console.log(form["language_names[]"]); --}}
+
+
+                <button class="add-more">
+                    <i class="fas fa-plus"></i>
+                    Add More
+                </button>
+            </div>
+
+
+        </section>
     </div>
 
 
@@ -112,28 +178,32 @@
         <h2 class="section-title">Other Sections</h2>
 
         <div class="add-section-buttons d-flex align-items-center gap-2">
-            <button id="add-education-button" type="button" class="add-section-button"
+            <button id="add-educations-button" type="button" class="add-section-button"
                 {{ $cv->educations->count() > 0 ? 'disabled' : '' }}>
                 <i class="fas fa-plus"></i>
-                Education
+                Educations
             </button>
 
-            <button id="add-experience-button" type="button" class="add-section-button">
+            <button id="add-experiences-button" type="button" class="add-section-button"
+                {{ $cv->experiences->count() > 0 ? 'disabled' : '' }}>
                 <i class="fas fa-plus"></i>
-                Experience
+                Experiences
             </button>
 
-            <button id="add-projects-button" type="button" class="add-section-button">
+            <button id="add-projects-button" type="button" class="add-section-button"
+                {{ $cv->projects->count() > 0 ? 'disabled' : '' }}>
                 <i class="fas fa-plus"></i>
                 Projects
             </button>
 
-            <button id="add-languages-button" type="button" class="add-section-button">
+            <button id="add-languages-button" type="button" class="add-section-button"
+                {{ $cv->languages->count() > 0 ? 'disabled' : '' }}>
                 <i class="fas fa-plus"></i>
                 Languages
             </button>
 
-            <button id="add-skills-button" type="button" class="add-section-button">
+            <button id="add-skills-button" type="button" class="add-section-button"
+                {{ $cv->skills->count() > 0 ? 'disabled' : '' }}>
                 <i class="fas fa-plus"></i>
                 Skills
             </button>

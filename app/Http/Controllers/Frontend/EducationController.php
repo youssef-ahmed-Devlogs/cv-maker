@@ -9,35 +9,36 @@ use Illuminate\Http\Request;
 
 class EducationController extends Controller
 {
-    public function addSection(Cv $cv)
+    public function addSection(Request $request, Cv $cv)
     {
-        if (request()->get('ajax')) {
-            $educationsCount = Education::where('cv_id', $cv->id)->count();
+        $educationsCount = Education::where('cv_id', $cv->id)->count();
 
-            if ($educationsCount == 0) {
-                $education = Education::create([
-                    'cv_id' => $cv->id,
-                ]);
+        if ($educationsCount == 0) {
+            $education = Education::create([
+                'cv_id' => $cv->id,
+            ]);
 
-                return [
-                    'formSection' => view('template_components.educations.form.section', compact('education'))->render(),
-                    'templateSection' => view('template_components.educations.view', compact('education'))->render(),
-                ];
-            }
-
-            return ['exists' => true];
+            return [
+                'formSection' => view('cv_sections_components.educations.form.section', compact('education'))->render(),
+                'templateSection' => view('cv_sections_components.educations.view', compact('education'))->render(),
+            ];
         }
 
-        abort('404', 'Not Found');
+        return ['exists' => true];
+    }
+
+    public function removeSection(Request $request, Cv $cv)
+    {
+        foreach ($cv->educations as $education) {
+            $education->delete();
+        }
+
+        return ['success' => true];
     }
 
     public function addItem()
     {
-        return view('template_components.educations.form.item');
-    }
-
-    public function removeSection()
-    {
+        return view('cv_sections_components.educations.form.item');
     }
 
     public function removeItem()

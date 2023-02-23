@@ -13,24 +13,40 @@
         <div class="cv-preview">
             {{-- Template Veiew --}}
             {!! $templateView !!}
-            {{-- @include('frontend.partials._template-view') --}}
 
             <div class="actions">
                 <button class="btn btn-primary d-flex">
                     <i class="far fa-edit"></i>
                     Edit Template
                 </button>
-                <button class="btn btn-success d-flex" id="submitCvForm">
+
+                <button class="btn btn-success d-flex" id="download-button">
                     <i class="fas fa-arrow-alt-circle-down"></i>
                     Download
                 </button>
+
+                {{-- If have a pro subscription --}}
+                @if (true)
+                    <select id="download-options" class="form-control">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPG</option>
+                        <option value="pdf">PDF</option>
+                    </select>
+                @endif
             </div>
         </div>
     </div>
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('frontend/js/html2canvas.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/html2pdf.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/cv-form.js') }}"></script>
+
     <script>
+        // ===== START WORKING WITH SECTIONS =====    
+
+        // To update any data in the form, and run live preview after the update
         function ajaxUpdate(formData) {
             $.ajax({
                 type: "PATCH",
@@ -39,52 +55,149 @@
                     ...formData,
                     _token: '{{ csrf_token() }}',
                 },
-            }).done(function(res) {
-                livePreview(res);
+            }).done(function(cvData) {
+                livePreview(cvData);
             });
         }
 
-        educationAjaxUpdate()
+        // ============= START EDUCATIONS SECTION =============
 
-        // Add education section
-        $("#add-education-button").on('click', function(e) {
+        // Add educations section
+        $("#add-educations-button").on('click', function(e) {
             $.ajax({
-                type: "GET",
-                url: "{{ route('frontend.education.components.formSection', $cv) }}",
+                type: "POST",
+                url: "{{ route('frontend.cvs.education.addSection', $cv) }}",
                 data: {
-                    ajax: 1
+                    ajax: 1,
+                    _token: '{{ csrf_token() }}',
                 },
             }).done(function(sectionHTML) {
-                $("#add-education-button").attr("disabled", true);
-                appendSectionToForm(sectionHTML.formSection, "#additional_form_sections");
-                appendSectionToTemplate(sectionHTML.templateSection, ".template_left_area");
-            });
+                appendSection({
+                    form: {
+                        html: sectionHTML.formSection,
+                        selector: '#additional_form_sections'
+                    },
+                    template: {
+                        html: sectionHTML.templateSection,
+                        selector: '.template_left_area'
+                    },
+                    addButton: `#${e.target.id}`
+                });
 
-            educationAjaxUpdate();
+                onSectionDataChange(["education"]);
+                onRemoveSection();
+            });
         })
 
-        function educationAjaxUpdate() {
-            let educationData = {};
-            const educationInputs = document.querySelectorAll('#education_inputs .education_input');
-
-            educationInputs.forEach(input => {
-                input.addEventListener('change', (e) => {
-                    educationData.id = e.target.dataset.id;
-                    educationData[e.target.name] = e.target.value;
-
-                    ajaxUpdate({
-                        education: educationData
-                    })
-                })
-            })
+        // Remove educations section
+        function ajaxDeleteEducationSection() {
+            $.ajax({
+                type: "DELETE",
+                url: `{{ route('frontend.cvs.education.removeSection', $cv) }}`,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(res) {
+                removeSection(`educations_section`);
+                $(`#add-educations-button`).attr("disabled", false);
+            });
         }
+
+        // ============= END EDUCATION SECTION =============
+
+
+        // ============= START PROJECTS SECTION =============
+
+        // Add experiences section
+        $("#add-experiences-button").on('click', function(e) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('frontend.cvs.experience.addSection', $cv) }}",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(sectionHTML) {
+                appendSection({
+                    form: {
+                        html: sectionHTML.formSection,
+                        selector: '#additional_form_sections'
+                    },
+                    template: {
+                        html: sectionHTML.templateSection,
+                        selector: '.template_left_area'
+                    },
+                    addButton: `#${e.target.id}`
+                });
+
+                onSectionDataChange(["experience"]);
+                onRemoveSection();
+            });
+        })
+
+        // Remove educations section
+        function ajaxDeleteExperienceSection() {
+            $.ajax({
+                type: "DELETE",
+                url: `{{ route('frontend.cvs.experience.removeSection', $cv) }}`,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(res) {
+                removeSection(`experiences_section`);
+                $(`#add-experiences-button`).attr("disabled", false);
+            });
+        }
+
+        // ============= END EDUCATION SECTION =============
+
+        // ============= START PROJECTS SECTION =============
+
+        // Add projects section
+        $("#add-projects-button").on('click', function(e) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('frontend.cvs.project.addSection', $cv) }}",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(sectionHTML) {
+                appendSection({
+                    form: {
+                        html: sectionHTML.formSection,
+                        selector: '#additional_form_sections'
+                    },
+                    template: {
+                        html: sectionHTML.templateSection,
+                        selector: '.template_left_area'
+                    },
+                    addButton: `#${e.target.id}`
+                });
+
+                onSectionDataChange(["project"]);
+                onRemoveSection();
+            });
+        })
+
+        // Remove projects section
+        function ajaxDeleteProjectSection() {
+            $.ajax({
+                type: "DELETE",
+                url: `{{ route('frontend.cvs.project.removeSection', $cv) }}`,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(res) {
+                removeSection(`projects_section`);
+                $(`#add-projects-button`).attr("disabled", false);
+            });
+        }
+
+        // ============= END EDUCATION SECTION =============
     </script>
 
-    <script src="{{ asset('frontend/js/cv-form.js') }}"></script>
-
     <script>
-        $("#submitCvForm").click(function() {
-            $("#cvForm").submit();
+        $("#download-button").click(function() {
+            // Do something
         });
     </script>
 @endsection

@@ -296,6 +296,19 @@
                 </p>
             </div>
             <!-- End Template Section -->
+
+            @foreach ($cv->educations as $education)
+                @include('cv_sections_components.educations.view')
+            @endforeach
+
+            @foreach ($cv->experiences as $experience)
+                @include('cv_sections_components.experiences.view')
+            @endforeach
+
+            @foreach ($cv->projects as $project)
+                @include('cv_sections_components.projects.view')
+            @endforeach
+
         </div>
         <!-- End Template Left Body -->
 

@@ -1,8 +1,8 @@
 <div class="row" id="education_item_{{ $education->id }}">
 
-    <span class="remove_education_item" data-id="{{ $education->id }}">
+    {{-- <span class="remove_education_item" data-id="{{ $education->id }}">
         <i class="fas fa-times"></i>
-    </span>
+    </span> --}}
 
     <div class="col-xl-6">
         <div class="form-item">
@@ -16,7 +16,7 @@
         <div class="form-item">
             <label for="university_specialization">Specialization</label>
             <input type="text" class="form-control education_input" name="university_specialization"
-                placeholder="university_specialization" data-id="{{ $education->id }}"
+                placeholder="University Specialization" data-id="{{ $education->id }}"
                 value="{{ $education->university_specialization }}">
         </div>
     </div>

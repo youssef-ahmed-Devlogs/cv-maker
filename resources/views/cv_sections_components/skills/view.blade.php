@@ -3,7 +3,7 @@
 
     <!-- Start Template Section Info -->
     <div class="template_sec_info" id="education_items">
-        @include('template_components.educations.viewItem')
+        @include('cv_sections_components.educations.viewItem')
     </div>
     <!-- End Template Section Info -->
 </div>

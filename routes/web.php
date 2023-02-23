@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CvController;
 use App\Http\Controllers\Frontend\EducationController;
+use App\Http\Controllers\Frontend\ExperienceController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +39,14 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
     Route::get('{cv}/cv', [CvController::class, 'edit'])->name('cvs.edit');
     Route::patch('{cv}/update', [CvController::class, 'update'])->name('cvs.update');
 
-    Route::get('{cv}/education/components/formSection', [EducationController::class, 'addSection'])->name('education.components.formSection');
+    Route::post('{cv}/education', [EducationController::class, 'addSection'])->name('cvs.education.addSection');
+    Route::delete('{cv}/education', [EducationController::class, 'removeSection'])->name('cvs.education.removeSection');
+
+    Route::post('{cv}/experience', [ExperienceController::class, 'addSection'])->name('cvs.experience.addSection');
+    Route::delete('{cv}/experience', [ExperienceController::class, 'removeSection'])->name('cvs.experience.removeSection');
+
+    Route::post('{cv}/project', [ProjectController::class, 'addSection'])->name('cvs.project.addSection');
+    Route::delete('{cv}/project', [ProjectController::class, 'removeSection'])->name('cvs.project.removeSection');
   });
 
   Route::get('', [FrontendController::class, 'index'])->name('index');
@@ -49,6 +58,20 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
 
 // =============== End Frontend ===============
 
+
+Route::get('/testttt', function () {
+
+  foreach (request()->language_names as $index => $lang_name) {
+    $lang_level = request()->language_levels[$index];
+
+    $lang->update([
+      'language_name' => $lang_name,
+      'language_level' => $lang_level,
+    ]);
+  }
+
+  // return ;
+});
 
 // =============== Start Admin ===============
 
