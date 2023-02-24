@@ -12,7 +12,9 @@ use App\Http\Controllers\Frontend\CvController;
 use App\Http\Controllers\Frontend\EducationController;
 use App\Http\Controllers\Frontend\ExperienceController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\ProjectController;
+use App\Http\Controllers\Frontend\SkillController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +49,12 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
 
     Route::post('{cv}/project', [ProjectController::class, 'addSection'])->name('cvs.project.addSection');
     Route::delete('{cv}/project', [ProjectController::class, 'removeSection'])->name('cvs.project.removeSection');
+
+    Route::post('{cv}/language', [LanguageController::class, 'addSection'])->name('cvs.language.addSection');
+    Route::delete('{cv}/language', [LanguageController::class, 'removeSection'])->name('cvs.language.removeSection');
+
+    Route::post('{cv}/skill', [SkillController::class, 'addSection'])->name('cvs.skill.addSection');
+    Route::delete('{cv}/skill', [SkillController::class, 'removeSection'])->name('cvs.skill.removeSection');
   });
 
   Route::get('', [FrontendController::class, 'index'])->name('index');
@@ -58,20 +66,6 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
 
 // =============== End Frontend ===============
 
-
-Route::get('/testttt', function () {
-
-  foreach (request()->language_names as $index => $lang_name) {
-    $lang_level = request()->language_levels[$index];
-
-    $lang->update([
-      'language_name' => $lang_name,
-      'language_level' => $lang_level,
-    ]);
-  }
-
-  // return ;
-});
 
 // =============== Start Admin ===============
 

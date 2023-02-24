@@ -1,9 +1,9 @@
-<div class="template_section" id="template_education_section">
-    <h2 class="template_sec_title bullet bullet-radius">Education</h2>
+<div class="template_sm_section" id="template_skills_section">
+    <h5 class="template_sm_section_title">Skills</h5>
 
-    <!-- Start Template Section Info -->
-    <div class="template_sec_info" id="education_items">
-        @include('cv_sections_components.educations.viewItem')
-    </div>
-    <!-- End Template Section Info -->
+    <!-- Start Template Small Section List -->
+    <ul class="template_sm_section_list" id="skill_items">
+        @include('cv_sections_components.skills.viewItem')
+    </ul>
+    <!-- End Template Small Section List -->
 </div>

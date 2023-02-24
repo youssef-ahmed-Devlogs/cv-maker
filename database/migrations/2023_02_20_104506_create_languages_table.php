@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->text('language_name')->nullable();
-            $table->text('language_level')->nullable();
             $table->foreignId('cv_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

@@ -308,7 +308,6 @@
             @foreach ($cv->projects as $project)
                 @include('cv_sections_components.projects.view')
             @endforeach
-
         </div>
         <!-- End Template Left Body -->
 
@@ -341,95 +340,13 @@
             </div>
             <!-- End Template Small Section -->
 
-            <!-- Start Template Small Section -->
-            <div class="template_sm_section" id="template_skills_section">
-                <h5 class="template_sm_section_title">Skills</h5>
+            @foreach ($cv->skills as $skill)
+                @include('cv_sections_components.skills.view')
+            @endforeach
 
-                <!-- Start Template Rating List -->
-                <ul class="template_rating_list">
-                    <li class="template_rating_list_item">
-                        <span class="template_rating_list_item_text">Laravel</span>
-
-                        <div class="template_rating_list_item_points">
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point"></span>
-                        </div>
-                    </li>
-
-                    <li class="template_rating_list_item">
-                        <span class="template_rating_list_item_text">Javascript</span>
-
-                        <div class="template_rating_list_item_points">
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                        </div>
-                    </li>
-
-                    <li class="template_rating_list_item">
-                        <span class="template_rating_list_item_text">Node Js</span>
-
-                        <div class="template_rating_list_item_points">
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point"></span>
-                            <span class="template_rating_list_item_point"></span>
-                        </div>
-                    </li>
-
-                    <li class="template_rating_list_item">
-                        <span class="template_rating_list_item_text">React Js</span>
-
-                        <div class="template_rating_list_item_points">
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point"></span>
-                        </div>
-                    </li>
-
-                    <li class="template_rating_list_item">
-                        <span class="template_rating_list_item_text">Photoshop</span>
-
-                        <div class="template_rating_list_item_points">
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point active"></span>
-                            <span class="template_rating_list_item_point"></span>
-                        </div>
-                    </li>
-                </ul>
-                <!-- End Template Rating List -->
-            </div>
-            <!-- End Template Small Section -->
-
-            <!-- Start Template Small Section -->
-            <div class="template_sm_section" id="template_languages_section">
-                <h5 class="template_sm_section_title">Languages</h5>
-
-                <!-- Start Template Small Section List -->
-                <ul class="template_sm_section_list">
-                    <li class="template_sm_section_list_item">
-                        <span class="template_sm_section_list_item_key">Arabic</span>
-                        <span class="template_sm_section_list_item_value">Native</span>
-                    </li>
-
-                    <li class="template_sm_section_list_item">
-                        <span class="template_sm_section_list_item_key">English</span>
-                        <span class="template_sm_section_list_item_value">chat</span>
-                    </li>
-
-                    <li class="template_sm_section_list_item">
-                        <span class="template_sm_section_list_item_key">Key</span>
-                        <span class="template_sm_section_list_item_value">value</span>
-                    </li>
-                </ul>
-                <!-- End Template Small Section List -->
-            </div>
-            <!-- End Template Small Section -->
+            @foreach ($cv->languages as $language)
+                @include('cv_sections_components.languages.view')
+            @endforeach
         </div>
         <!-- End Template Right Body -->
     </div>

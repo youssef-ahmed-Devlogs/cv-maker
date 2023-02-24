@@ -1,85 +1,38 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
+use App\Models\Cv;
 use App\Models\Language;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function addSection(Request $request, Cv $cv)
     {
-        //
+        $languagesCount = Language::where('cv_id', $cv->id)->count();
+
+        if ($languagesCount == 0) {
+            $language = Language::create([
+                'cv_id' => $cv->id,
+            ]);
+
+            return [
+                'formSection' => view('cv_sections_components.languages.form.section', compact('language'))->render(),
+                'templateSection' => view('cv_sections_components.languages.view', compact('language'))->render(),
+            ];
+        }
+
+        return ['exists' => true];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function removeSection(Request $request, Cv $cv)
     {
-        //
-    }
+        foreach ($cv->languages as $language) {
+            $language->delete();
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Language  $language
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Language $language)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Language  $language
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Language $language)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Language  $language
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Language $language)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Language  $language
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Language $language)
-    {
-        //
+        return ['success' => true];
     }
 }

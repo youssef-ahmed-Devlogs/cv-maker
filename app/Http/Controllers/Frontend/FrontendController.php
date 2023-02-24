@@ -52,7 +52,8 @@ class FrontendController extends Controller
 
     public function myCvs()
     {
-        return view('frontend.pages.my_cvs');
+        $cvs = auth()->user()->cvs;
+        return view('frontend.pages.my_cvs', compact('cvs'));
     }
 
     public function myAccount()

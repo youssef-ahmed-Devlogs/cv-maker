@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Cv;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Language;
 use App\Models\Project;
+use App\Models\Skill;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -47,13 +49,21 @@ class CvController extends Controller
             Project::where('id', $request->project['id'])->update($request->project);
         }
 
+        if ($request->language != null) {
+            Language::where('id', $request->language['id'])->update($request->language);
+        }
+
+        if ($request->skill != null) {
+            Skill::where('id', $request->skill['id'])->update($request->skill);
+        }
+
         $cvData = json_encode([
             'mainFormData' => $cv,
             'educations' => $cv->educations,
             'experiences' => $cv->experiences,
             'projects' => $cv->projects,
-            'languages' => $cv->languages,
-            'skills' => $cv->skills,
+            'languages' => $cv->languages->count() > 0 ? explode(',', trim($cv->languages[0]->language_name)) : [],
+            'skills' => $cv->skills->count() > 0 ? explode(',', trim($cv->skills[0]->skill_name)) : [],
         ], JSON_UNESCAPED_UNICODE);
 
         return json_decode($cvData, JSON_UNESCAPED_UNICODE);

@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(City::class);
     }
+
+    public function cvs()
+    {
+        return $this->hasMany(Cv::class)->latest();
+    }
 }

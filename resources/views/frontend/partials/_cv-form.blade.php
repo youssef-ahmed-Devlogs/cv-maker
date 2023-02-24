@@ -110,67 +110,13 @@
             @include('cv_sections_components.projects.form.section', $project)
         @endforeach
 
+        @foreach ($cv->languages as $language)
+            @include('cv_sections_components.languages.form.section', $language)
+        @endforeach
 
-        <section id="languages_section">
-            <h2 class="section-title">
-                Languages
-
-                <span class="remove-section" data-section_name="languages">
-                    <i class="fas fa-times"></i>
-                </span>
-            </h2>
-
-            <div id="language_inputs">
-                <div class="row mb-3" id="languages_inputs_item_id">
-                    <div class="col-xl-6">
-                        <div class="form-item">
-                            <label for="language_name">Language Name</label>
-                            <input type="text" class="form-control" name="language_names[]"
-                                placeholder="Language Name">
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6">
-                        <div class="form-item">
-                            <label for="language_level">Level</label>
-                            <input type="text" class="form-control" name="language_levels[]" placeholder="Level">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-3" id="languages_inputs_item_id">
-
-                    <span class="remove_language_input_item" data-id="id">
-                        <i class="fas fa-times"></i>
-                    </span>
-
-                    <div class="col-xl-6">
-                        <div class="form-item">
-                            <label for="language_name">Language Name</label>
-                            <input type="text" class="form-control" name="language_names[]"
-                                placeholder="Language Name">
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6">
-                        <div class="form-item">
-                            <label for="language_level">Level</label>
-                            <input type="text" class="form-control" name="language_levels[]" placeholder="Level">
-                        </div>
-                    </div>
-                </div>
-
-                {{-- console.log(form["language_names[]"]); --}}
-
-
-                <button class="add-more">
-                    <i class="fas fa-plus"></i>
-                    Add More
-                </button>
-            </div>
-
-
-        </section>
+        @foreach ($cv->skills as $skill)
+            @include('cv_sections_components.skills.form.section', $skill)
+        @endforeach
     </div>
 
 

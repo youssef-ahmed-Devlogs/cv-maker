@@ -1,5 +1,7 @@
 :root {
     --template-primary-color: #003e77;
+    --template-blue-dark-color: #1a73e842;
+    --template-primary-hover: #1967d2;
     --template-second-color: #2c2c2c;
     --template-gray-color: #e4e4e4;
     --template-white-color: #fff;
@@ -27,4 +29,20 @@
     flex-direction: column;
     direction: ltr;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.template_sm_section_list_item_tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.template_sm_section_list_item_tag {
+    background-color: var(--template-primary-hover);
+    color: var(--template-white-color);
+    display: block;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 3px 7px;
+    font-size: calc(var(--template-primary-fontsize) - 38px);
 }

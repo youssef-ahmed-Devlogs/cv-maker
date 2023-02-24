@@ -1,6 +1,5 @@
 @extends('frontend.layout.app')
 
-
 @section('styles')
     <style>
         .cv-template-card .cv-cover {
@@ -47,47 +46,47 @@
 
             <div class="row mt-5">
 
-                <div class="col-xl-4 mb-5">
-                    <div class="card cv-template-card">
-                        <div class="card-body">
-                            <div class="cv-cover">
-                                <img src="{{ asset('frontend/images/cv_cover.png') }}" alt="">
-                            </div>
-
-                            <div class="cv-info">
-                                <h4 class="template-name">Amazing</h4>
-                                <div class="dates d-flex align-items-center justify-content-between">
-                                    <span class="created_at">Created at: 22/01/2023</span>
-                                    <span class="last_edit">Last edit: 22/01/2023</span>
+                @foreach ($cvs as $cv)
+                    <div class="col-xl-4 mb-5">
+                        <div class="card cv-template-card">
+                            <div class="card-body">
+                                <div class="cv-cover">
+                                    <img src="{{ $cv->template->cover() }}" alt="">
                                 </div>
-                            </div>
 
-                            <div class="cv-actions d-flex align-items-center justify-content-between flex-wrap gap-2">
-                                <a href="#" class="cv-action-btn btn btn-primary">
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                    Download
-                                </a>
+                                <div class="cv-info">
+                                    <h4 class="template-name">{{ $cv->name ?? 'Template' }}</h4>
+                                    <div class="dates d-flex align-items-center justify-content-between">
+                                        <span class="created_at">Created at: {{ $cv->created_at }}</span>
+                                        <span class="last_edit">Last edit: {{ $cv->updated_at }}</span>
+                                    </div>
+                                </div>
 
-                                <a href="#" class="cv-action-btn btn btn-secondary">
-                                    <i class="fa-solid fa-share"></i>
-                                    Share
-                                </a>
+                                <div class="cv-actions d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                    <a href="{{ route('frontend.download') }}" class="cv-action-btn btn btn-primary">
+                                        <i class="fa-solid fa-arrow-down"></i>
+                                        Download
+                                    </a>
 
-                                <a href="#" class="cv-action-btn btn btn-success">
-                                    <i class="fas fa-pen"></i>
-                                    Edit
-                                </a>
+                                    <a href="#" class="cv-action-btn btn btn-secondary">
+                                        <i class="fa-solid fa-share"></i>
+                                        Share
+                                    </a>
 
-                                <button class="cv-action-btn btn btn-danger">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                    Delete
-                                </button>
+                                    <a href="{{ route('frontend.cvs.edit', $cv) }}" class="cv-action-btn btn btn-success">
+                                        <i class="fas fa-pen"></i>
+                                        Edit
+                                    </a>
+
+                                    <button class="cv-action-btn btn btn-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
+                @endforeach
             </div>
         </div>
     </section>

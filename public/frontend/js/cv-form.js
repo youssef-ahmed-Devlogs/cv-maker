@@ -31,6 +31,8 @@ onSectionDataChange([
     "language",
 ]);
 
+// console.log(form["language_names[]"]);
+
 // ===== END WORKING WITH SECTIONS =====
 
 function onSectionDataChange(sectionNames) {
@@ -66,6 +68,12 @@ function onRemoveSection() {
                 case "projects":
                     ajaxDeleteProjectSection();
                     break;
+                case "languages":
+                    ajaxDeleteLanguageSection();
+                    break;
+                case "skills":
+                    ajaxDeleteSkillSection();
+                    break;
             }
         });
     });
@@ -87,6 +95,8 @@ function livePreview(data) {
     livePreviewEducationData(data);
     livePreviewExperiencesData(data);
     livePreviewProjectsData(data);
+    livePreviewLanguagesData(data);
+    livePreviewSkillsData(data);
 }
 
 function livePreviewMainData(data) {
@@ -140,5 +150,23 @@ function livePreviewProjectsData(data) {
         $("#template_project_start_date").text(project.project_start_date);
         $("#template_project_end_date").text(project.project_end_date);
         $("#template_project_description").text(project.project_description);
+    });
+}
+
+function livePreviewLanguagesData(data) {
+    $("#template_languages_tags").empty();
+    data.languages.forEach((language) => {
+        $("#template_languages_tags").append(
+            `<span class="template_sm_section_list_item_tag">${language}</span>`
+        );
+    });
+}
+
+function livePreviewSkillsData(data) {
+    $("#template_skills_tags").empty();
+    data.skills.forEach((skill) => {
+        $("#template_skills_tags").append(
+            `<span class="template_sm_section_list_item_tag">${skill}</span>`
+        );
     });
 }

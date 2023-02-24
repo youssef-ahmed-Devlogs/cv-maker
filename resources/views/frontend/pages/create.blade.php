@@ -192,7 +192,95 @@
             });
         }
 
-        // ============= END EDUCATION SECTION =============
+        // ============= END PROJECTS SECTION =============
+
+        // ============= START LANGUAGES SECTION =============
+
+        // Add languages section
+        $("#add-languages-button").on('click', function(e) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('frontend.cvs.language.addSection', $cv) }}",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(sectionHTML) {
+                appendSection({
+                    form: {
+                        html: sectionHTML.formSection,
+                        selector: '#additional_form_sections'
+                    },
+                    template: {
+                        html: sectionHTML.templateSection,
+                        selector: '.template_right_area'
+                    },
+                    addButton: `#${e.target.id}`
+                });
+
+                onSectionDataChange(["language"]);
+                onRemoveSection();
+            });
+        })
+
+        // Remove languages section
+        function ajaxDeleteLanguageSection() {
+            $.ajax({
+                type: "DELETE",
+                url: `{{ route('frontend.cvs.language.removeSection', $cv) }}`,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(res) {
+                removeSection(`languages_section`);
+                $(`#add-languages-button`).attr("disabled", false);
+            });
+        }
+
+        // ============= END LANGUAGES SECTION =============
+
+        // ============= START SKILLS SECTION =============
+
+        // Add skills section
+        $("#add-skills-button").on('click', function(e) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('frontend.cvs.skill.addSection', $cv) }}",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(sectionHTML) {
+                appendSection({
+                    form: {
+                        html: sectionHTML.formSection,
+                        selector: '#additional_form_sections'
+                    },
+                    template: {
+                        html: sectionHTML.templateSection,
+                        selector: '.template_right_area'
+                    },
+                    addButton: `#${e.target.id}`
+                });
+
+                onSectionDataChange(["skill"]);
+                onRemoveSection();
+            });
+        })
+
+        // Remove skills section
+        function ajaxDeleteSkillSection() {
+            $.ajax({
+                type: "DELETE",
+                url: `{{ route('frontend.cvs.skill.removeSection', $cv) }}`,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+            }).done(function(res) {
+                removeSection(`skills_section`);
+                $(`#add-skills-button`).attr("disabled", false);
+            });
+        }
+
+        // ============= END SKILLS SECTION =============
     </script>
 
     <script>
