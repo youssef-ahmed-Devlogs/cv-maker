@@ -32,11 +32,6 @@ class FrontendController extends Controller
         return view('frontend.pages.faq');
     }
 
-    public function download()
-    {
-        return view('frontend.pages.download');
-    }
-
     public function templates()
     {
         $templates = Template::all();

@@ -11,29 +11,24 @@
         </div>
 
         <div class="cv-preview">
+            <div class="actions mb-2 d-flex justify-content-end">
+                {{-- <button class="btn btn-primary d-flex">
+                    <i class="far fa-edit"></i>
+                    Edit Template
+                </button> --}}
+
+                <a href="{{ route('frontend.cvs.download', $cv) }}" class="btn btn-success d-flex">
+                    <i class="fas fa-arrow-alt-circle-down"></i>
+                    Download
+                </a>
+
+
+            </div>
+
             {{-- Template Veiew --}}
             {!! $templateView !!}
 
-            <div class="actions">
-                <button class="btn btn-primary d-flex">
-                    <i class="far fa-edit"></i>
-                    Edit Template
-                </button>
 
-                <button class="btn btn-success d-flex" id="download-button">
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                    Download
-                </button>
-
-                {{-- If have a pro subscription --}}
-                @if (true)
-                    <select id="download-options" class="form-control">
-                        <option value="png">PNG</option>
-                        <option value="jpeg">JPG</option>
-                        <option value="pdf">PDF</option>
-                    </select>
-                @endif
-            </div>
         </div>
     </div>
 @endsection

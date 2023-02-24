@@ -34,12 +34,14 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
     Route::post('my-password', [FrontendController::class, 'updateMyPassword'])->name('update_my_password');
     Route::get('my-cvs', [FrontendController::class, 'myCvs'])->name('my_cvs');
     Route::get('create', [FrontendController::class, 'create'])->name('create');
-    Route::get('download', [FrontendController::class, 'download'])->name('download');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('{template}/create', [CvController::class, 'create'])->name('cvs.create');
     Route::get('{cv}/cv', [CvController::class, 'edit'])->name('cvs.edit');
     Route::patch('{cv}/update', [CvController::class, 'update'])->name('cvs.update');
+    Route::get('{cv}/download', [CvController::class, 'download'])->name('cvs.download');
+    Route::get('{cv}/share', [CvController::class, 'share'])->name('cvs.share');
+    Route::delete('{cv}/destroy', [CvController::class, 'destroy'])->name('cvs.destroy');
 
     Route::post('{cv}/education', [EducationController::class, 'addSection'])->name('cvs.education.addSection');
     Route::delete('{cv}/education', [EducationController::class, 'removeSection'])->name('cvs.education.removeSection');

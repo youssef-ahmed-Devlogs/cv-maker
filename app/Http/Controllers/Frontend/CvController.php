@@ -68,4 +68,23 @@ class CvController extends Controller
 
         return json_decode($cvData, JSON_UNESCAPED_UNICODE);
     }
+
+    public function download(Cv $cv)
+    {
+        $templateView = Blade::render($cv->template->template_code, ['cv' => $cv]);
+        return view('frontend.pages.download', compact('cv', 'templateView'));
+    }
+
+    public function share(Cv $cv)
+    {
+        $templateView = Blade::render($cv->template->template_code, ['cv' => $cv]);
+        return view('frontend.pages.share', compact('cv', 'templateView'));
+    }
+
+    public function destroy(Cv $cv)
+    {
+        $cv->delete();
+        toastr()->success('Cv has been deleted');
+        return redirect()->back();
+    }
 }
