@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Template;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Hash;
@@ -13,8 +12,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $usersCount = User::count();
-        return view('frontend.pages.index', compact('usersCount'));
+        return view('frontend.pages.index');
     }
 
     public function about()

@@ -35,7 +35,7 @@
                             <div class="swiper-header mb-1">
                                 <div class="download-count d-flex gap-2">
                                     <i class="fas fa-download"></i>
-                                    <span>12.259</span>
+                                    <span>{{ $template->downloads }}</span>
                                 </div>
                             </div>
 

@@ -258,7 +258,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_users') }}
                                 </span>
-                                <span class="count d-block">+{{ $usersCount }}</span>
+                                <span class="count d-block">+{{ \App\Models\User::count() }}</span>
                             </div>
                         </div>
                     </div>
@@ -274,7 +274,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_templates') }}
                                 </span>
-                                <span class="count d-block">+100</span>
+                                <span class="count d-block">+{{ \App\Models\Template::count() }}</span>
                             </div>
                         </div>
                     </div>
@@ -290,7 +290,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_downloads') }}
                                 </span>
-                                <span class="count d-block">+900</span>
+                                <span class="count d-block">+{{ App\Models\Template::sum('downloads') }}</span>
                             </div>
                         </div>
                     </div>

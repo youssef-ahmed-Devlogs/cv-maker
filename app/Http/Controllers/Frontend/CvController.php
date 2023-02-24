@@ -22,6 +22,8 @@ class CvController extends Controller
             'template_id' => $template->id,
         ]);
 
+        $template->increment('downloads');
+
         return redirect()->route('frontend.cvs.edit', $cv);
     }
 
