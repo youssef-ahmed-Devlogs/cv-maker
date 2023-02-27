@@ -207,7 +207,7 @@
                 </div>
 
                 <div class="col-xl-4">
-                    <div class="card">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <form action="{{ route('frontend.update_my_password') }}" method="POST">
                                 @csrf
@@ -250,6 +250,48 @@
                             </form>
                         </div>
                     </div>
+
+
+                    @if (auth()->user()->has_subscription())
+                        <div class="card mb-4">
+                            <p class="m-0 px-3 pt-3">
+                                @if (auth()->user()->has_subscription()->plan == 'PRO')
+                                    You are subscribed in the pro subscription plan.
+
+                                    <span class="d-block">
+                                        Expiration Date:
+
+                                        <strong>
+                                            {{ auth()->user()->has_subscription()->expiration_date }}
+                                        </strong>
+                                    </span>
+
+                                    <span class="d-block">
+                                        <strong>{{ auth()->user()->subscriptionExpiration() }}</strong>
+                                        days left.
+                                    </span>
+                                @else
+                                    You are subscribed in the free plan.
+                                @endif
+                            </p>
+
+                            <div class="card-body">
+                                <form
+                                    action="{{ route('frontend.subscription.unsubscribe',auth()->user()->has_subscription()->plan) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger mt-3 d-flex align-items-center gap-2"
+                                        onclick="return confirm('Are you sure you want to unsubscribe?')">
+                                        <i class="fa-solid fa-user-xmark"></i>
+                                        Unsubscribe
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

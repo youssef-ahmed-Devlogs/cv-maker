@@ -155,7 +155,7 @@
                             <div class="card-price text-center">
                                 <div class="price">
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
-                                        <span class="before-discount d-block">$0.00</span>
+                                        {{-- <span class="before-discount d-block">EGP</span> --}}
 
                                         <span class="text-primary bg-primary-opacity fw-bold after-discount d-block">
                                             {{ __('frontend.subscription_save') }} 100%
@@ -163,15 +163,19 @@
                                     </div>
 
                                     <div class="dollar d-flex align-items-baseline justify-content-center">
-                                        $
+                                        EGP
                                         <span>0.00</span>
                                         /{{ __('frontend.subscription_per_month') }}
                                     </div>
                                 </div>
 
-                                <a href="{{ route('frontend.templates') }}" class="subscripe-btn btn btn-primary">
-                                    {{ __('frontend.subscription_start_button_text') }}
-                                </a>
+                                <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
+                                    @csrf
+
+                                    <button class="subscripe-btn btn btn-primary" type="submit">
+                                        {{ __('frontend.subscription_start_button_text') }}
+                                    </button>
+                                </form>
                             </div>
 
                             <!-- card list -->
@@ -206,21 +210,32 @@
                             <div class="card-price text-center">
                                 <div class="price">
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
-                                        <span class="before-discount d-block">$9.99</span>
+                                        <span class="before-discount d-block">EGP400</span>
                                         <span class="text-success bg-success-opacity fw-bold after-discount d-block">
                                             {{ __('frontend.subscription_save') }} 50%
                                         </span>
                                     </div>
 
                                     <div class="dollar d-flex align-items-baseline justify-content-center">
-                                        $
-                                        <span>4.99</span>
+                                        EGP
+                                        <span>99</span>
                                         /{{ __('frontend.subscription_per_month') }}
                                     </div>
                                 </div>
-                                <button class="subscripe-btn btn btn-success">
-                                    {{ __('frontend.subscription_subscribe_button_text') }}
-                                </button>
+
+                                <form action="{{ route('frontend.subscription.subscribe', 'PRO') }}" method="POST">
+                                    @csrf
+
+                                    <button class="subscripe-btn btn btn-success" type="submit">
+                                        {{ __('frontend.subscription_subscribe_button_text') }}
+                                    </button>
+                                </form>
+
+
+
+
+
+
                             </div>
 
                             <!-- card list -->
