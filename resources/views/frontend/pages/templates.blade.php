@@ -18,11 +18,29 @@
             border-radius: 10px;
         }
     </style>
+
+    <style>
+        .template-page .template-image {
+            position: relative;
+        }
+
+        .template-page .feature-template {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            color: var(--light-color);
+            background-color: var(--second-color);
+            padding: 5px 10px;
+            font-size: var(--h7-size);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
 @endsection
 
 @section('content')
     {{-- <a href="{{ route('frontend.create') }}" class="btn btn-primary">Create Cv</a> --}}
-    <section class="frequent-section">
+    <section class="template-page">
         <div class="container">
             <h1 class="page-title text-center">Choose a template</h1>
 
@@ -39,7 +57,11 @@
                                 </div>
                             </div>
 
-                            <a href="{{ route('frontend.cvs.create', $template) }}" class="swiper-image">
+                            <a href="{{ route('frontend.cvs.create', $template) }}" class="swiper-image template-image">
+                                @if (!$template->is_free)
+                                    <span class="feature-template">PRO</span>
+                                @endif
+
                                 <img class="w-100" src="{{ $template->cover() }}" alt="" />
                             </a>
                         </div>

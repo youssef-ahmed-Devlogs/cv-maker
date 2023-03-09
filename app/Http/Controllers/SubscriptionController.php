@@ -10,6 +10,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 // 4242 4242 4242 4242
 class SubscriptionController extends Controller
 {
+    public function index()
+    {
+        return view('frontend.pages.subscription');
+    }
+
     public function subscribe(Request $request, $plan)
     {
         $subscription_options = [

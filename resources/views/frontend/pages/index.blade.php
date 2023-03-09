@@ -2,64 +2,10 @@
 
 
 @section('styles')
-    <style>
-        .home-carousel img {
-            height: 500px;
-            object-fit: cover;
-        }
-    </style>
 @endsection
 
 
 @section('content')
-    {{-- <div id="carouselExampleControls" class="home-carousel carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://fastly.picsum.photos/id/484/1920/1080.jpg?hmac=vmcAj5Ko9XuMClDpoG0f71EbsLLyC70juc3xi9cGnNU"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://fastly.picsum.photos/id/396/1920/1080.jpg?hmac=nFYCp4cByMuYgmYxslhjvND5HAvEcvBCvrkUMbjuFKQ"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://fastly.picsum.photos/id/655/1920/1080.jpg?hmac=aKxkq2OlSgFaw0pcf_uve5cFi267Y7c92cP9UjDti8s"
-                    class="d-block w-100" alt="...">
-            </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <div id="site-ads">
-        <div class="left-ads">
-            <a href="#" class="single-ad">
-                <img src="https://fastly.picsum.photos/id/6/250/250.jpg?hmac=K97_-kF7Rw2VoofnQGeSjM6-UQbnDjpieX2DnMhfPYw"
-                    alt="">
-            </a>
-
-            <a href="#" class="single-ad">
-                <img src="https://fastly.picsum.photos/id/6/250/250.jpg?hmac=K97_-kF7Rw2VoofnQGeSjM6-UQbnDjpieX2DnMhfPYw"
-                    alt="">
-            </a>
-        </div>
-    </div> --}}
-
-    <!-- ====================== START LOGIN SECTION ====================== -->
-    @guest
-        @include('frontend.partials._login-section')
-    @endguest
-    <!-- ====================== END LOGIN SECTION ====================== -->
-
-
     <!-- ====================== START hero section ====================== -->
 
     <section class="hero-section">
@@ -72,9 +18,17 @@
                     <p>
                         {{ __('frontend.hero_text') }}
                     </p>
-                    <a href="{{ route('frontend.templates') }}" class="btn btn-xl btn-primary">
-                        {{ __('frontend.hero_button_text') }}
-                    </a>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="{{ route('frontend.templates') }}" class="btn btn-xl btn-primary">
+                            {{ __('frontend.hero_button_text') }}
+                        </a>
+
+                        <button class="btn btn-success btn-xl" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#video_learn" data-bs-whatever="@mdo">
+                            Learn
+                        </button>
+                    </div>
                 </div>
                 <div class="col col-md-6 col-lg-6 col-sm-12">
                     <div class="image mx-auto">
@@ -83,9 +37,19 @@
                 </div>
             </div>
         </div>
+
+        @guest
+            @include('frontend.partials._video-modal')
+        @endguest
     </section>
 
     <!-- ====================== End hero section ====================== -->
+
+    <!-- ====================== START LOGIN SECTION ====================== -->
+    @guest
+        @include('frontend.partials._login-section')
+    @endguest
+    <!-- ====================== END LOGIN SECTION ====================== -->
 
     <!-- ====================== START Advantages section ====================== -->
 

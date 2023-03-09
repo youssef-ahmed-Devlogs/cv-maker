@@ -17,6 +17,10 @@ class CvController extends Controller
 {
     public function create(Template $template)
     {
+        if (!$template->is_free && auth()->user()->pro_subscription() == null) {
+            return redirect()->route('frontend.subscription');
+        }
+
         $cv = Cv::create([
             'user_id' => auth()->id(),
             'template_id' => $template->id,
@@ -29,12 +33,20 @@ class CvController extends Controller
 
     public function edit(Cv $cv)
     {
+        if (!$cv->template->is_free && auth()->user()->pro_subscription() == null) {
+            return redirect()->route('frontend.subscription');
+        }
+
         $templateView = Blade::render($cv->template->template_code, ['cv' => $cv]);
         return view('frontend.pages.create', compact('cv', 'templateView'));
     }
 
     public function update(Request $request, Cv $cv)
     {
+        if (!$cv->template->is_free && auth()->user()->pro_subscription() == null) {
+            return redirect()->route('frontend.subscription');
+        }
+
         $mainFormData = $request->except(['education', 'experience', 'project', 'language', 'skill']);
 
         $cv->update($mainFormData);
@@ -73,6 +85,10 @@ class CvController extends Controller
 
     public function download(Cv $cv)
     {
+        if (!$cv->template->is_free && auth()->user()->pro_subscription() == null) {
+            return redirect()->route('frontend.subscription');
+        }
+
         $templateView = Blade::render($cv->template->template_code, ['cv' => $cv]);
         return view('frontend.pages.download', compact('cv', 'templateView'));
     }

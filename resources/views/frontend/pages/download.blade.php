@@ -14,10 +14,14 @@
                     Download
                 </button>
 
+
                 <select id="download-options" class="form-control">
                     <option value="png">PNG</option>
                     <option value="jpeg">JPG</option>
-                    <option value="pdf">PDF</option>
+
+                    @if (auth()->user()->pro_subscription() != null)
+                        <option value="pdf">PDF</option>
+                    @endif
                 </select>
             </div>
 

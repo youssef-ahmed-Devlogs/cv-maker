@@ -73,22 +73,41 @@
                                         Download
                                     </a>
 
-                                    <button class="cv-action-btn btn btn-secondary share_btn"
-                                        data-url="{{ route('frontend.cvs.share', $cv) }}">
-                                        <i class="fa-solid fa-share"></i>
-                                        Share
-                                    </button>
-
-                                    <a href="{{ route('frontend.cvs.edit', $cv) }}" class="cv-action-btn btn btn-success">
-                                        <i class="fas fa-pen"></i>
-                                        Edit
-                                    </a>
-
                                     <button class="cv-action-btn btn btn-danger"
                                         onclick='document.getElementById("{{ $cv->id }}_cv_delete_form").submit()'>
                                         <i class="fa-solid fa-trash-can"></i>
                                         Delete
                                     </button>
+
+                                    @if (auth()->user()->pro_subscription() != null)
+                                        <button class="cv-action-btn btn btn-secondary share_btn"
+                                            data-url="{{ route('frontend.cvs.share', $cv) }}">
+                                            <i class="fa-solid fa-share"></i>
+                                            Share
+                                        </button>
+
+                                        <a href="{{ route('frontend.cvs.edit', $cv) }}"
+                                            class="cv-action-btn btn btn-success">
+                                            <i class="fas fa-pen"></i>
+                                            Edit
+                                        </a>
+                                    @else
+                                        <a href="{{ route('frontend.subscription') }}"
+                                            class="cv-action-btn btn btn-secondary disabled"
+                                            title="You have to sucscribe in the pro subscription to use this feature">
+                                            <i class="fa-solid fa-share"></i>
+                                            Share
+                                        </a>
+
+                                        <a href="{{ route('frontend.subscription') }}"
+                                            class="cv-action-btn btn btn-success disabled"
+                                            title="You have to sucscribe in the pro subscription to use this feature">
+                                            <i class="fas fa-pen"></i>
+                                            Edit
+                                        </a>
+                                    @endif
+
+
                                 </div>
 
                                 <form id="{{ $cv->id }}_cv_delete_form"

@@ -38,6 +38,7 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     // SUBSCRIPTIONS
+    Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription');
     Route::post('subscription/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscription.subscribe');
     Route::delete('unsubscribe/{plan}', [SubscriptionController::class, 'unsubscribe'])->name('subscription.unsubscribe');
     Route::get('subscription/success', [SubscriptionController::class, 'subscribe_success'])->name('subscription.success');
