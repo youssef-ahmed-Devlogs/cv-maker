@@ -6,57 +6,6 @@
 
 
 @section('content')
-<<<<<<< HEAD
-     <div id="carouselExampleControls" class="home-carousel carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://fastly.picsum.photos/id/484/1920/1080.jpg?hmac=vmcAj5Ko9XuMClDpoG0f71EbsLLyC70juc3xi9cGnNU"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://fastly.picsum.photos/id/396/1920/1080.jpg?hmac=nFYCp4cByMuYgmYxslhjvND5HAvEcvBCvrkUMbjuFKQ"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://fastly.picsum.photos/id/655/1920/1080.jpg?hmac=aKxkq2OlSgFaw0pcf_uve5cFi267Y7c92cP9UjDti8s"
-                    class="d-block w-100" alt="...">
-            </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <div id="site-ads">
-        <div class="left-ads">
-            <a href="#" class="single-ad">
-                <img src="https://fastly.picsum.photos/id/6/250/250.jpg?hmac=K97_-kF7Rw2VoofnQGeSjM6-UQbnDjpieX2DnMhfPYw"
-                    alt="">
-            </a>
-
-            <a href="#" class="single-ad">
-                <img src="https://fastly.picsum.photos/id/6/250/250.jpg?hmac=K97_-kF7Rw2VoofnQGeSjM6-UQbnDjpieX2DnMhfPYw"
-                    alt="">
-            </a>
-        </div>
-    </div>
-
-    <!-- ====================== START LOGIN SECTION ====================== -->
-    @guest
-        @include('frontend.partials._login-section')
-    @endguest
-    <!-- ====================== END LOGIN SECTION ====================== -->
-
-
-=======
->>>>>>> 0c3d496a217698478087f131862fd6bb5b6805b9
     <!-- ====================== START hero section ====================== -->
 
     <section class="hero-section">
@@ -190,7 +139,6 @@
 
                                 {{-- <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
                                     @csrf
-
                                     <button class="subscripe-btn btn btn-primary" type="submit">
                                         {{ __('frontend.subscription_start_button_text') }}
                                     </button>
