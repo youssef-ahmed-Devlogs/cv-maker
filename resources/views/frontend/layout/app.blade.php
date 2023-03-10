@@ -45,8 +45,33 @@
     <!-- ====================== START MAIN CONTENT ====================== -->
     <main>
 
+        @php
+            $routesWithoutAds = ['frontend.cvs.edit', 'frontend.index'];
+        @endphp
 
-        @yield('content')
+        @if (in_array(Route::currentRouteName(), $routesWithoutAds))
+            @yield('content')
+        @else
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-10">
+                        @yield('content')
+                    </div>
+
+                    <div class="col-xl-2 p-2">
+                        <a href="#" class="card mb-3">
+                            <img src="{{ asset('images/ads_1.png') }}" alt="">
+                        </a>
+
+                        <a href="#" class="card mb-3">
+                            <img src="{{ asset('images/ads_2.jpg') }}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+
     </main>
     <!-- ====================== END MAIN CONTENT ====================== -->
 

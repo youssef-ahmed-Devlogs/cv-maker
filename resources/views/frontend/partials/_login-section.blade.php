@@ -1,4 +1,4 @@
-<section class="login-section">
+<section class="login-section" id="login-section">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-6 mb-4">

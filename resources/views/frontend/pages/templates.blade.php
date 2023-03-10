@@ -18,13 +18,57 @@
             border-radius: 10px;
         }
     </style>
+
+    <style>
+        .template-page .template-image {
+            position: relative;
+        }
+
+        .template-page .feature-template {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            color: var(--light-color);
+            background-color: var(--second-color);
+            padding: 5px 10px;
+            font-size: var(--h7-size);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
 @endsection
 
 @section('content')
     {{-- <a href="{{ route('frontend.create') }}" class="btn btn-primary">Create Cv</a> --}}
-    <section class="frequent-section">
+    <section class="template-page">
         <div class="container">
             <h1 class="page-title text-center">Choose a template</h1>
+
+            <form action="" class="mb-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select name="category" class="form-control" onchange="this.form.submit()">
+                            @php
+                                $categories = \App\Models\Category::all();
+                            @endphp
+                            <option value="">All Categories</option>
+
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ request()->get('category') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->title() }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="is_free" class="form-control" onchange="this.form.submit()">
+                            <option value="">FREE & PRO</option>
+                            <option value="0" {{ request()->get('is_free') == '0' ? 'selected' : '' }}>PRO</option>
+                            <option value="1" {{ request()->get('is_free') == '1' ? 'selected' : '' }}>FREE</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
 
             <div class="swiper">
                 <!-- Additional required wrapper -->
@@ -35,11 +79,15 @@
                             <div class="swiper-header mb-1">
                                 <div class="download-count d-flex gap-2">
                                     <i class="fas fa-download"></i>
-                                    <span>12.259</span>
+                                    <span>{{ $template->downloads }}</span>
                                 </div>
                             </div>
 
-                            <a href="{{ route('frontend.cvs.create', $template) }}" class="swiper-image">
+                            <a href="{{ route('frontend.cvs.create', $template) }}" class="swiper-image template-image">
+                                @if (!$template->is_free)
+                                    <span class="feature-template">PRO</span>
+                                @endif
+
                                 <img class="w-100" src="{{ $template->cover() }}" alt="" />
                             </a>
                         </div>
@@ -47,10 +95,10 @@
                 </div>
 
                 <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
+                {{-- <div class="swiper-pagination"></div> --}}
                 <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                {{-- <div class="swiper-button-prev"></div> --}}
+                {{-- <div class="swiper-button-next"></div> --}}
             </div>
         </div>
     </section>
@@ -63,15 +111,15 @@
 
 
             // If we need pagination
-            pagination: {
-                el: ".swiper-pagination",
-            },
+            // pagination: {
+            //     el: ".swiper-pagination",
+            // },
 
             // Navigation arrows
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+            // navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev",
+            // },
 
             // Responsive breakpoints
             breakpoints: {
@@ -93,7 +141,7 @@
                 },
                 // when window width is >= 840px
                 840: {
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                     spaceBetween: 30,
                 },
             },

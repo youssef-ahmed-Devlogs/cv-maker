@@ -55,6 +55,13 @@
     --shadow-1: 0 10px 0 #06162165;
 }
 
+button.disabled,
+a.disabled {
+    pointer-events: auto !important;
+    cursor: not-allowed !important;
+    opacity: 0.3 !important;
+}
+
 @media (max-width: 600px) {
     :root {
         /* FONT SIZES */

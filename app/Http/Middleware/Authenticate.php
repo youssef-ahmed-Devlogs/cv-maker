@@ -19,7 +19,8 @@ class Authenticate extends Middleware
             if (str_starts_with($request->getRequestUri(), '/admin')) {
                 return route('admin.login');
             }
-            return route('frontend.index');
+
+            return route('frontend.index') . '#login-section';
         }
     }
 }

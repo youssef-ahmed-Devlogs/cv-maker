@@ -79,7 +79,7 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.index') }}">
+                            <a class="nav-link" href="{{ route('frontend.index') . '#login-section' }}">
                                 <i class="far fa-user"></i>
                                 {{ __('frontend.login') }}
                             </a>

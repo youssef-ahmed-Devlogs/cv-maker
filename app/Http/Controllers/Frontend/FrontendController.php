@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Template;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Hash;
@@ -13,8 +12,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $usersCount = User::count();
-        return view('frontend.pages.index', compact('usersCount'));
+        return view('frontend.pages.index');
     }
 
     public function about()
@@ -32,14 +30,16 @@ class FrontendController extends Controller
         return view('frontend.pages.faq');
     }
 
-    public function download()
-    {
-        return view('frontend.pages.download');
-    }
-
     public function templates()
     {
-        $templates = Template::all();
+        $templates = Template::where(function ($q) {
+            if (request()->get('category') != '')
+                $q->where('category_id', request()->get('category'));
+
+            if (request()->get('is_free') != '')
+                $q->where('is_free', request()->get('is_free'));
+        })->get();
+
         return view('frontend.pages.templates', compact('templates'));
     }
 

@@ -2,16 +2,11 @@
 
 
 @section('styles')
-    <style>
-        .home-carousel img {
-            height: 500px;
-            object-fit: cover;
-        }
-    </style>
 @endsection
 
 
 @section('content')
+<<<<<<< HEAD
      <div id="carouselExampleControls" class="home-carousel carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -60,6 +55,8 @@
     <!-- ====================== END LOGIN SECTION ====================== -->
 
 
+=======
+>>>>>>> 0c3d496a217698478087f131862fd6bb5b6805b9
     <!-- ====================== START hero section ====================== -->
 
     <section class="hero-section">
@@ -72,20 +69,38 @@
                     <p>
                         {{ __('frontend.hero_text') }}
                     </p>
-                    <a href="{{ route('frontend.templates') }}" class="btn btn-xl btn-primary">
-                        {{ __('frontend.hero_button_text') }}
-                    </a>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="{{ route('frontend.templates') }}" class="btn btn-xl btn-primary">
+                            {{ __('frontend.hero_button_text') }}
+                        </a>
+
+                        <button class="btn btn-success btn-xl" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#video_learn" data-bs-whatever="@mdo">
+                            Learn
+                        </button>
+                    </div>
                 </div>
                 <div class="col col-md-6 col-lg-6 col-sm-12">
                     <div class="image mx-auto">
-                        <img src="{{ asset('frontend/images/hero.png') }}" alt="tamplet photo" />
+                        <img src="{{ asset('images/template_1.png') }}" alt="tamplet photo" />
                     </div>
                 </div>
             </div>
         </div>
+
+
+        @include('frontend.partials._video-modal')
+
     </section>
 
     <!-- ====================== End hero section ====================== -->
+
+    <!-- ====================== START LOGIN SECTION ====================== -->
+    @guest
+        @include('frontend.partials._login-section')
+    @endguest
+    <!-- ====================== END LOGIN SECTION ====================== -->
 
     <!-- ====================== START Advantages section ====================== -->
 
@@ -155,7 +170,7 @@
                             <div class="card-price text-center">
                                 <div class="price">
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
-                                        <span class="before-discount d-block">$0.00</span>
+                                        {{-- <span class="before-discount d-block">EGP</span> --}}
 
                                         <span class="text-primary bg-primary-opacity fw-bold after-discount d-block">
                                             {{ __('frontend.subscription_save') }} 100%
@@ -163,7 +178,7 @@
                                     </div>
 
                                     <div class="dollar d-flex align-items-baseline justify-content-center">
-                                        $
+                                        EGP
                                         <span>0.00</span>
                                         /{{ __('frontend.subscription_per_month') }}
                                     </div>
@@ -172,6 +187,14 @@
                                 <a href="{{ route('frontend.templates') }}" class="subscripe-btn btn btn-primary">
                                     {{ __('frontend.subscription_start_button_text') }}
                                 </a>
+
+                                {{-- <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
+                                    @csrf
+
+                                    <button class="subscripe-btn btn btn-primary" type="submit">
+                                        {{ __('frontend.subscription_start_button_text') }}
+                                    </button>
+                                </form> --}}
                             </div>
 
                             <!-- card list -->
@@ -206,21 +229,32 @@
                             <div class="card-price text-center">
                                 <div class="price">
                                     <div class="discount d-flex align-items-center justify-content-center gap-2">
-                                        <span class="before-discount d-block">$9.99</span>
+                                        <span class="before-discount d-block">EGP400</span>
                                         <span class="text-success bg-success-opacity fw-bold after-discount d-block">
                                             {{ __('frontend.subscription_save') }} 50%
                                         </span>
                                     </div>
 
                                     <div class="dollar d-flex align-items-baseline justify-content-center">
-                                        $
-                                        <span>4.99</span>
+                                        EGP
+                                        <span>99</span>
                                         /{{ __('frontend.subscription_per_month') }}
                                     </div>
                                 </div>
-                                <button class="subscripe-btn btn btn-success">
-                                    {{ __('frontend.subscription_subscribe_button_text') }}
-                                </button>
+
+                                <form action="{{ route('frontend.subscription.subscribe', 'PRO') }}" method="POST">
+                                    @csrf
+
+                                    <button class="subscripe-btn btn btn-success" type="submit">
+                                        {{ __('frontend.subscription_subscribe_button_text') }}
+                                    </button>
+                                </form>
+
+
+
+
+
+
                             </div>
 
                             <!-- card list -->
@@ -258,7 +292,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_users') }}
                                 </span>
-                                <span class="count d-block">+{{ $usersCount }}</span>
+                                <span class="count d-block">+{{ \App\Models\User::count() }}</span>
                             </div>
                         </div>
                     </div>
@@ -274,7 +308,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_templates') }}
                                 </span>
-                                <span class="count d-block">+100</span>
+                                <span class="count d-block">+{{ \App\Models\Template::count() }}</span>
                             </div>
                         </div>
                     </div>
@@ -290,7 +324,7 @@
                                 <span class="text d-block">
                                     {{ __('frontend.statistics_downloads') }}
                                 </span>
-                                <span class="count d-block">+900</span>
+                                <span class="count d-block">+{{ App\Models\Template::sum('downloads') }}</span>
                             </div>
                         </div>
                     </div>

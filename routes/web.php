@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\Frontend\SkillController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::post("/localization", [LocalizationController::class, 'changeLanguage'])->name('localization.change_language');
@@ -34,12 +35,21 @@ Route::group(['prefix' => '/', 'as' => 'frontend.'], function () {
     Route::post('my-password', [FrontendController::class, 'updateMyPassword'])->name('update_my_password');
     Route::get('my-cvs', [FrontendController::class, 'myCvs'])->name('my_cvs');
     Route::get('create', [FrontendController::class, 'create'])->name('create');
-    Route::get('download', [FrontendController::class, 'download'])->name('download');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+    // SUBSCRIPTIONS
+    Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription');
+    Route::post('subscription/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscription.subscribe');
+    Route::delete('unsubscribe/{plan}', [SubscriptionController::class, 'unsubscribe'])->name('subscription.unsubscribe');
+    Route::get('subscription/success', [SubscriptionController::class, 'subscribe_success'])->name('subscription.success');
+    Route::get('subscription/cancel', [SubscriptionController::class, 'subscribe_cancel'])->name('subscription.cancel');
 
     Route::get('{template}/create', [CvController::class, 'create'])->name('cvs.create');
     Route::get('{cv}/cv', [CvController::class, 'edit'])->name('cvs.edit');
     Route::patch('{cv}/update', [CvController::class, 'update'])->name('cvs.update');
+    Route::get('{cv}/download', [CvController::class, 'download'])->name('cvs.download');
+    Route::get('{cv}/share', [CvController::class, 'share'])->name('cvs.share');
+    Route::delete('{cv}/destroy', [CvController::class, 'destroy'])->name('cvs.destroy');
 
     Route::post('{cv}/education', [EducationController::class, 'addSection'])->name('cvs.education.addSection');
     Route::delete('{cv}/education', [EducationController::class, 'removeSection'])->name('cvs.education.removeSection');

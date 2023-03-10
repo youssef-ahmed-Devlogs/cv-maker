@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cover');
             $table->text('template_code');
             $table->string('is_free');
+            $table->integer('downloads')->default(0);
             $table->foreignId('created_by')->constrained('users', 'id')->cascadeOnUpdate();
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate();
             $table->timestamps();
