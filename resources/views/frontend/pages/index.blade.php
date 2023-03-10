@@ -12,7 +12,7 @@
 
 
 @section('content')
-    {{-- <div id="carouselExampleControls" class="home-carousel carousel slide" data-bs-ride="carousel">
+     <div id="carouselExampleControls" class="home-carousel carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://fastly.picsum.photos/id/484/1920/1080.jpg?hmac=vmcAj5Ko9XuMClDpoG0f71EbsLLyC70juc3xi9cGnNU"
@@ -51,7 +51,7 @@
                     alt="">
             </a>
         </div>
-    </div> --}}
+    </div>
 
     <!-- ====================== START LOGIN SECTION ====================== -->
     @guest
