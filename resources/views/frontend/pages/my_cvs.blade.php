@@ -74,7 +74,7 @@
                                     </a>
 
                                     <button class="cv-action-btn btn btn-danger"
-                                        onclick='document.getElementById("{{ $cv->id }}_cv_delete_form").submit()'>
+                                        onclick='deleteMyCv(document.getElementById("{{ $cv->id }}_cv_delete_form"))'>
                                         <i class="fa-solid fa-trash-can"></i>
                                         Delete
                                     </button>
@@ -143,5 +143,12 @@
                 navigator.clipboard.writeText(shareUrlInput.value);
             })
         });
+    </script>
+
+    <script>
+        function deleteMyCv(form) {
+            if (confirm('Are you sure?'))
+                form.submit();
+        }
     </script>
 @endsection
