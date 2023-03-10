@@ -32,7 +32,14 @@ class FrontendController extends Controller
 
     public function templates()
     {
-        $templates = Template::all();
+        $templates = Template::where(function ($q) {
+            if (request()->get('category') != '')
+                $q->where('category_id', request()->get('category'));
+
+            if (request()->get('is_free') != '')
+                $q->where('is_free', request()->get('is_free'));
+        })->get();
+
         return view('frontend.pages.templates', compact('templates'));
     }
 

@@ -32,15 +32,15 @@
                 </div>
                 <div class="col col-md-6 col-lg-6 col-sm-12">
                     <div class="image mx-auto">
-                        <img src="{{ asset('frontend/images/hero.png') }}" alt="tamplet photo" />
+                        <img src="{{ asset('images/template_1.png') }}" alt="tamplet photo" />
                     </div>
                 </div>
             </div>
         </div>
 
-        @guest
-            @include('frontend.partials._video-modal')
-        @endguest
+
+        @include('frontend.partials._video-modal')
+
     </section>
 
     <!-- ====================== End hero section ====================== -->
@@ -133,13 +133,17 @@
                                     </div>
                                 </div>
 
-                                <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
+                                <a href="{{ route('frontend.templates') }}" class="subscripe-btn btn btn-primary">
+                                    {{ __('frontend.subscription_start_button_text') }}
+                                </a>
+
+                                {{-- <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
                                     @csrf
 
                                     <button class="subscripe-btn btn btn-primary" type="submit">
                                         {{ __('frontend.subscription_start_button_text') }}
                                     </button>
-                                </form>
+                                </form> --}}
                             </div>
 
                             <!-- card list -->

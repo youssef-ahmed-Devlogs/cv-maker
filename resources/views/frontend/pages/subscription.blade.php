@@ -43,13 +43,17 @@
                                     </div>
                                 </div>
 
-                                <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
+                                <a href="{{ route('frontend.templates') }}" class="subscripe-btn btn btn-primary">
+                                    {{ __('frontend.subscription_start_button_text') }}
+                                </a>
+
+                                {{-- <form action="{{ route('frontend.subscription.subscribe', 'FREE') }}" method="POST">
                                     @csrf
 
                                     <button class="subscripe-btn btn btn-primary" type="submit">
                                         {{ __('frontend.subscription_start_button_text') }}
                                     </button>
-                                </form>
+                                </form> --}}
                             </div>
 
                             <!-- card list -->

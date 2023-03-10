@@ -38,7 +38,7 @@
 }
 
 .template_sm_section_list_item_tag {
-    background-color: var(--template-primary-hover);
+    background-color: var(--template-primary-color);
     color: var(--template-white-color);
     display: block;
     border-radius: 4px;

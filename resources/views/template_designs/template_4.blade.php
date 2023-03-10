@@ -1,6 +1,6 @@
 <style>
     .template_header {
-        background-color: var(--template-primary-color);
+        /* background-color: var(--template-primary-color); */
         padding-top: var(--template-padding-y);
         padding-bottom: var(--template-padding-x);
         padding-left: var(--template-padding-x);
@@ -20,6 +20,7 @@
         height: 100px;
         object-fit: cover;
         border-radius: 10px;
+        display: none;
     }
 
     .template_person_name_title {
@@ -30,12 +31,12 @@
     .template_person_name {
         font-size: calc(var(--template-primary-fontsize) - 15px);
         font-weight: bold;
-        color: var(--template-white-color);
+        color: var(--template-second-color);
     }
 
     .template_person_title {
         font-size: calc(var(--template-primary-fontsize) - 30px);
-        color: var(--template-gray-color);
+        color: var(--template-second-color);
     }
 
     .template_header_contact {
@@ -45,7 +46,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 60%;
+        width: 80%;
         position: absolute;
         right: 0px;
         bottom: -20px;
@@ -54,6 +55,8 @@
         border-left-style: solid;
         border-top-width: 3px;
         border-left-width: 3px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
     .template_header_email {
