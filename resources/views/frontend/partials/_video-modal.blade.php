@@ -8,10 +8,16 @@
             </div>
 
             <div class="modal-body">
-                <iframe style="width: 100%;
+                {{-- <iframe style="width: 100%;
                 height: 400px;"
                     src="https://www.youtube.com/embed/0gaywaSz8uU"
                     title="اعضاء فريق الافنجرز الجديد New Avengers Team Members" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe> --}}
+
+                <iframe style="width: 100%;
+                height: 400px;"
+                    src="https://www.youtube.com/embed/PDNmUfYzxIQ" title="cv maker intro" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
             </div>
