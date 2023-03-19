@@ -67,17 +67,9 @@
                                 </div>
 
                                 <div class="cv-actions d-flex align-items-center justify-content-between flex-wrap gap-2">
-                                    <a href="{{ route('frontend.cvs.download', $cv) }}"
-                                        class="cv-action-btn btn btn-primary">
-                                        <i class="fa-solid fa-arrow-down"></i>
-                                        Download
-                                    </a>
 
-                                    <button class="cv-action-btn btn btn-danger"
-                                        onclick='deleteMyCv(document.getElementById("{{ $cv->id }}_cv_delete_form"))'>
-                                        <i class="fa-solid fa-trash-can"></i>
-                                        Delete
-                                    </button>
+
+
 
                                     @if (auth()->user()->pro_subscription() != null)
                                         <button class="cv-action-btn btn btn-secondary share_btn"
@@ -90,6 +82,12 @@
                                             class="cv-action-btn btn btn-success">
                                             <i class="fas fa-pen"></i>
                                             Edit
+                                        </a>
+
+                                        <a href="{{ route('frontend.cvs.download', $cv) }}"
+                                            class="cv-action-btn btn btn-primary">
+                                            <i class="fa-solid fa-arrow-down"></i>
+                                            Download
                                         </a>
                                     @else
                                         <a href="{{ route('frontend.subscription') }}"
@@ -105,7 +103,21 @@
                                             <i class="fas fa-pen"></i>
                                             Edit
                                         </a>
+
+
+                                        <a href="{{ route('frontend.subscription') }}"
+                                            class="cv-action-btn btn btn-primary disabled"
+                                            title="You have to sucscribe in the pro subscription to use this feature">
+                                            <i class="fa-solid fa-arrow-down"></i>
+                                            Download
+                                        </a>
                                     @endif
+
+                                    <button class="cv-action-btn btn btn-danger"
+                                        onclick='deleteMyCv(document.getElementById("{{ $cv->id }}_cv_delete_form"))'>
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        Delete
+                                    </button>
 
 
                                 </div>
