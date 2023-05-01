@@ -26,7 +26,7 @@
 
                         <button class="btn btn-success btn-xl" type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#video_learn" data-bs-whatever="@mdo">
-                            Learn
+                            {{ __('frontend.learn_button_text') }}
                         </button>
                     </div>
                 </div>

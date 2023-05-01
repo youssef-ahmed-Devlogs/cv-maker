@@ -39,10 +39,9 @@
 @endsection
 
 @section('content')
-    {{-- <a href="{{ route('frontend.create') }}" class="btn btn-primary">Create Cv</a> --}}
     <section class="template-page">
         <div class="container">
-            <h1 class="page-title text-center">Choose a template</h1>
+            <h1 class="page-title text-center">{{ __('frontend.choose_template_head') }}</h1>
 
             <form action="" class="mb-5">
                 <div class="row">
@@ -51,7 +50,7 @@
                             @php
                                 $categories = \App\Models\Category::all();
                             @endphp
-                            <option value="">All Categories</option>
+                            <option value="">{{ __('frontend.all_categories') }}</option>
 
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -62,9 +61,12 @@
                     </div>
                     <div class="col-md-4">
                         <select name="is_free" class="form-control" onchange="this.form.submit()">
-                            <option value="">FREE & PRO</option>
-                            <option value="0" {{ request()->get('is_free') == '0' ? 'selected' : '' }}>PRO</option>
-                            <option value="1" {{ request()->get('is_free') == '1' ? 'selected' : '' }}>FREE</option>
+                            <option value="">{{ __('frontend.subscription_free') }} &
+                                {{ __('frontend.subscription_pro') }}</option>
+                            <option value="0" {{ request()->get('is_free') == '0' ? 'selected' : '' }}>
+                                {{ __('frontend.subscription_pro') }}</option>
+                            <option value="1" {{ request()->get('is_free') == '1' ? 'selected' : '' }}>
+                                {{ __('frontend.subscription_free') }}</option>
                         </select>
                     </div>
                 </div>

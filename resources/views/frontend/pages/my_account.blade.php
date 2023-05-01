@@ -40,7 +40,7 @@
 @section('content')
     <section class="frequent-section">
         <div class="container">
-            <h1 class="page-title text-center">My Account</h1>
+            <h1 class="page-title text-center">{{ __('frontend.my_account_head') }}</h1>
 
             <div class="row">
                 <div class="col-xl-8">
@@ -106,7 +106,8 @@
                                     <div class="col-xl-6">
                                         <div class="form-item mb-2">
                                             <input type="text" class="form-control" name="phone"
-                                                placeholder="Your phone" value="{{ auth()->user()->phone }}" />
+                                                placeholder="{{ __('frontend.enter_your_phone') }}"
+                                                value="{{ auth()->user()->phone }}" />
 
                                             @error('phone')
                                                 <small class='text-danger d-block'>{{ $message }}</small>
@@ -187,7 +188,8 @@
 
                                     <div class="col-xl-12">
                                         <div class="form-item">
-                                            <textarea cols="30" rows="5" name="about_me" class="form-control" placeholder="About me">{{ auth()->user()->about_me }}</textarea>
+                                            <textarea cols="30" rows="5" name="about_me" class="form-control"
+                                                placeholder="{{ __('frontend.about_me') }}">{{ auth()->user()->about_me }}</textarea>
 
                                             @error('about_me')
                                                 <small class='text-danger d-block'>{{ $message }}</small>
@@ -199,7 +201,7 @@
 
                                 <button id="btn-update" class="btn btn-success mt-3 d-flex align-items-center gap-2">
                                     <i class="fas fa-pen"></i>
-                                    Update
+                                    {{ __('frontend.update') }}
                                 </button>
                             </form>
                         </div>
@@ -215,7 +217,7 @@
                                 <div class="row">
                                     <div class="form-item mb-2">
                                         <input type="password" class="form-control" name="current_password"
-                                            placeholder="Enter your current password" />
+                                            placeholder="{{ __('frontend.enter_your_current_password') }}" />
 
                                         @error('current_password')
                                             <small class='text-danger d-block'>{{ $message }}</small>
@@ -224,7 +226,7 @@
 
                                     <div class="form-item mb-2">
                                         <input type="password" class="form-control" name="password"
-                                            placeholder="Enter new password" />
+                                            placeholder="{{ __('frontend.enter_your_new_password') }}" />
 
                                         @error('password')
                                             <small class='text-danger d-block'>{{ $message }}</small>
@@ -233,7 +235,7 @@
 
                                     <div class="form-item mb-2">
                                         <input type="password" class="form-control" name="password_confirmation"
-                                            placeholder="Re-Enter new password" />
+                                            placeholder="{{ __('frontend.re_enter_your_new_password') }}" />
 
                                         @error('password_confirmation')
                                             <small class='text-danger d-block'>{{ $message }}</small>
@@ -245,7 +247,7 @@
 
                                 <button class="btn btn-success mt-3 d-flex align-items-center gap-2">
                                     <i class="fas fa-pen"></i>
-                                    Update Password
+                                    {{ __('frontend.update_password') }}
                                 </button>
                             </form>
                         </div>
@@ -256,10 +258,10 @@
                         <div class="card mb-4">
                             <p class="m-0 px-3 pt-3">
                                 @if (auth()->user()->has_subscription()->plan == 'PRO')
-                                    You are subscribed in the pro subscription plan.
+                                    {{ __('frontend.you_are_subscribed_in_the_pro') }}
 
                                     <span class="d-block">
-                                        Expiration Date:
+                                        {{ __('frontend.expiration_date') }}:
 
                                         <strong>
                                             {{ auth()->user()->has_subscription()->expiration_date }}
@@ -268,10 +270,10 @@
 
                                     <span class="d-block">
                                         <strong>{{ auth()->user()->subscriptionExpiration() }}</strong>
-                                        days left.
+                                        {{ __('frontend.days_left') }}
                                     </span>
                                 @else
-                                    You are subscribed in the free plan.
+                                    {{ __('frontend.you_are_subscribed_in_the_free') }}
                                 @endif
                             </p>
 
@@ -285,7 +287,7 @@
                                     <button class="btn btn-danger mt-3 d-flex align-items-center gap-2"
                                         onclick="return confirm('Are you sure you want to unsubscribe?')">
                                         <i class="fa-solid fa-user-xmark"></i>
-                                        Unsubscribe
+                                        {{ __('frontend.unsubscribe') }}
                                     </button>
                                 </form>
                             </div>
