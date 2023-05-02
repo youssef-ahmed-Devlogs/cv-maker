@@ -113,4 +113,22 @@ return [
   // Choose A Template page
   'choose_template_head' => 'أختر قالب',
   'all_categories' => 'كل التصنيفات',
+
+  // Create Cv page
+  'main_information' => 'المعلومات الأساسية',
+  'name' => 'الأسم',
+  'job_title' => 'الوظيفة',
+  'email' => 'البريد الإلكتروني',
+  'phone' => 'الهاتف',
+  'date_of_birth' => 'تاريخ الميلاد',
+  'country' => 'الدولة',
+  'address' => 'العنوان',
+  'about_me' => 'عني',
+  'other_sections' => 'أقسام أخرى',
+  'educations' => 'التعليم',
+  'experiences' => 'الخبرات',
+  'projects' => 'المشاريع',
+  'languages' => 'اللغات',
+  'skills' => 'المهارات',
+  'download' => 'تنزيل',
 ];

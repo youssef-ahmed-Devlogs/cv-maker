@@ -114,4 +114,22 @@ return [
   // Choose A Template page
   'choose_template_head' => 'Choose a template',
   'all_categories' => 'All Categories',
+
+  // Create Cv page
+  'main_information' => 'Main Information',
+  'name' => 'Name',
+  'job_title' => 'Job Title',
+  'email' => 'Email',
+  'phone' => 'Phone',
+  'date_of_birth' => 'Date of Birth',
+  'country' => 'Country',
+  'address' => 'Address',
+  'about_me' => 'About Me',
+  'other_sections' => 'Other Sections',
+  'educations' => 'Educations',
+  'experiences' => 'Experiences',
+  'projects' => 'Projects',
+  'languages' => 'Languages',
+  'skills' => 'Skills',
+  'download' => 'Download',
 ];

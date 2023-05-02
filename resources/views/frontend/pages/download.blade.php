@@ -11,7 +11,7 @@
         <div class="container">
             <div class="actions">
                 <button id="download-button" class="btn btn-xl btn-primary">
-                    Download
+                    {{ __('frontend.download_button_text') }}
                 </button>
 
 

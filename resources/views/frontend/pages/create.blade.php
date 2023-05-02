@@ -19,7 +19,7 @@
 
                 <a href="{{ route('frontend.cvs.download', $cv) }}" class="btn btn-success d-flex">
                     <i class="fas fa-arrow-alt-circle-down"></i>
-                    Download
+                    {{ __('frontend.download') }}
                 </a>
 
 
