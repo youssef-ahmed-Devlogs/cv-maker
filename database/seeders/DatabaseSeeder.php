@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
         }
 
 
-        User::factory(10)->create();
+        User::factory(967)->create();
 
         $admin = User::create([
             'name' => 'Admin',
