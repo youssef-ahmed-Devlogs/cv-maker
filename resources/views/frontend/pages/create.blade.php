@@ -25,7 +25,7 @@
 
             </div>
 
-            {{-- Template Veiew --}}
+            {{-- Template Veiw --}}
             {!! $templateView !!}
 
 

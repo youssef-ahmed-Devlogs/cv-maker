@@ -77,7 +77,9 @@ const downloadOptions = document.getElementById("download-options");
 
 const opt = {
     // margin: 0.5,
-    filename: "myfile.pdf",
+    filename: `cv_${Math.floor(
+        Math.random() * Math.random() * 999999999999
+    )}.pdf`,
     image: { type: "jpeg", quality: 1 },
     html2canvas: { scale: 4 },
     jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
