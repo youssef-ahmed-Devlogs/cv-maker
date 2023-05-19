@@ -120,6 +120,8 @@ class TemplateController extends Controller
      */
     public function destroy(Template $template)
     {
-        //
+        $template->delete();
+        toastr()->success('Template deleted successfully.');
+        return redirect()->back();
     }
 }

@@ -55,9 +55,9 @@ return [
   'subscription_features' => [
     'Download templates with JPG extension only' => 'free',
     'Use many pro templates' => 'pro',
+    'Remove ads' => 'pro',
     'Download templates with many extensions ( PDF - JPG - PNG )' => 'pro',
     'Edit templates after create it from any where and any time' => 'pro',
-    'Change templates theme' => 'pro',
     'Share your CV with one click' => 'pro',
   ],
 
@@ -68,7 +68,7 @@ return [
 
   // Different Conbinations Section
   'diff_conbitaions_text' => 'Have you checked out our Templates?',
-  'diff_conbitaions_heading' => 'More than 30 different combinations',
+  'diff_conbitaions_heading' => 'More than 5 different combinations',
   'diff_conbitaions_button_text' => 'See Templates',
 
   // =========== End Home page ===========

@@ -68,7 +68,7 @@ return [
 
   // Different Conbinations Section
   'diff_conbitaions_text' => 'هل قمت بفحص القوالب الخاصة بنا؟',
-  'diff_conbitaions_heading' => 'أكثر من 100 مجموعة مختلفة',
+  'diff_conbitaions_heading' => 'أكثر من 5 مجموعة مختلفة',
   'diff_conbitaions_button_text' => 'شاهد القوالب',
 
   // =========== End Home page ===========

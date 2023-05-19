@@ -49,7 +49,8 @@
             $routesWithoutAds = ['frontend.cvs.edit', 'frontend.index'];
         @endphp
 
-        @if (in_array(Route::currentRouteName(), $routesWithoutAds))
+        @if (in_array(Route::currentRouteName(), $routesWithoutAds) ||
+                auth()->user()->pro_subscription())
             @yield('content')
         @else
             <div class="container-fluid">
